@@ -115,15 +115,19 @@ public class TradingSystem implements InputProcessable{
     public void requestToBurrow() throws IOException, ClassNotFoundException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
-        System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
-        System.out.println("Please type in the item id of the item you want to trade.");
-        String input = br.readLine();
-        if (itemListManager.findItemByItemId(inputArray.get(0)) != null && itemListManager.findItemByItemId(input) != null) {
-            Appointment appointment = tradeManager.borrow(itemListManager.findItemByItemId(inputArray.get(0)),
-                    itemListManager.findUserByItemId(inputArray.get(0)),  inputArray.get(1),inputArray.get(2));
+//        System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
+//        String input = br.readLine();
+        if (itemListManager.findItemByItemId(inputArray.get(0)) != null){ //&& itemListManager.findItemByItemId(input) != null) {
+            Appointment appointment = tradeManager.borrow(
+                    itemListManager.findItemByItemId(inputArray.get(0)),
+                    clientUserManager.getCurrentUser(),
+                    inputArray.get(1),
+                    inputArray.get(2));
+            System.out.println("Appointment Setup Successfully, waiting for the other user to confirm.");
             clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
             itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            System.out.println(clientUserManager.getCurrentUser().getPendingAppointments());
             run();
         } else {
             System.out.println("Id does not match. Please try again.");
