@@ -20,6 +20,8 @@ public class TradingSystem implements InputProcessable{
     private TradeManager tradeManager;
     private ItemListManager itemListManager ;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
+    private int numTry = 0;
+    private int maxNumTry = 2;
 
     public TradingSystem(ClientUserManager clientUserManager){
         this.clientUserManager = clientUserManager;
@@ -37,6 +39,12 @@ public class TradingSystem implements InputProcessable{
 
     @Override
     public void processInput(ArrayList<String> inputArray) throws IOException, ClassNotFoundException {
+        /**
+         * 1. Add an item to wishlist
+         * 2. Request to Trade
+         * 3. Request to Borrow
+         * 4. Return to Client menu
+         * */
         if (inputArray.get(0).equals("1")) {
             itemListManager.showAllUserInventories();
             addItemToWishlist();
@@ -49,7 +57,7 @@ public class TradingSystem implements InputProcessable{
             itemListManager.showAllUserInventories();
             requestToBurrow();
         }
-
+        // Going back
         if (inputArray.get(0).equals("4")) {
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);
@@ -59,17 +67,23 @@ public class TradingSystem implements InputProcessable{
 
     private void addItemToWishlist() throws IOException, ClassNotFoundException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("please type in the id of the item to approve");
-            String input = br.readLine();
-            if(itemListManager.addItemToWishList(input)) {
-                System.out.println("Item added to wishlist.");
-                ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-                run();
-            }
-            else {
-                System.out.println("No ID matches your input, try again.");
-                addItemToWishlist();
-            }
+        System.out.println("please type in the id of the item to approve");
+        String input = br.readLine();
+        if(itemListManager.addItemToWishList(input)) {
+            numTry = 0;
+            System.out.println("Wishlist updated.");
+            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            run();
+        }
+        else if (numTry < maxNumTry) {
+            System.out.println("No ID matches your input, try again.");
+            addItemToWishlist();
+            numTry ++;
+        } else{
+            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);
+            clientUserSystem.run();
+        }
 
     }
 

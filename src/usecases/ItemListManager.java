@@ -11,29 +11,6 @@ public class ItemListManager {
     private ItemList itemList;
     private ClientUserManager clientUserManager;
 
-    // OLD CODE FROM EDEN
-    /*
-        public ItemListManager(String itemListCSVFile){
-        itemList = createItemListFromCSV(itemListCSVFile);
-    }
-
-    public ItemList getItemList(){
-        return this.itemList;
-    }
-
-    // TODO: move this into a gateway
-    private ItemList createItemListFromCSV(String itemListCSVFile) {
-        List<Item> itemList = new ArrayList<>();
-        String[] items = itemListCSVFile.split(System.lineSeparator());
-        for (int i = 1; i < items.length; i++) {
-            //skip title
-            Item item = createItem(items[i]);
-            itemList.add(item);
-        }
-        return new ItemList(itemList);
-    }
-     */
-
     // David's code change. changed because I want to move Read and Write away from usecase and into gateway.
     public ItemListManager(ClientUserManager clientUserManager){
         this.clientUserManager = clientUserManager;
@@ -91,8 +68,6 @@ public class ItemListManager {
         return false;
     }
 
-
-
     public void showAllUserInventories() {
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
             System.out.println(clientUser.toString());
@@ -127,9 +102,8 @@ public class ItemListManager {
             for (Item item: clientUser.getInventory().getItems()) {
                 if (item.getItemId().equals(id)) {
                     ClientUser userToAdd = clientUserManager.getCurrentUser();
-                    //System.out.println(userToAdd.toString());
                     userToAdd.addToWishList(item);
-                    //System.out.println("ADDED:" + userToAdd.getWishList().toString());
+                    System.out.println("Successfully added to wish List for testing");
                     return true;
                 }
             }

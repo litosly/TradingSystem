@@ -42,43 +42,52 @@ public class ClientUserSystem implements InputProcessable{
 
     @Override
     public void processInput(ArrayList<String> inputArray) throws ClassNotFoundException, IOException {
+        // 1. Look for things to trade
         if (inputArray.get(0).equals("1")) {
             trading();
         }
+        // 2. Browse Pending Transactions
         else if (inputArray.get(0).equals("2")) {
         }
+        // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
         }
+        // 4. View Most Frequent Trade Partners
         else if (inputArray.get(0).equals("4")) {
-        } //Browse Pending Appointments
+        }
+        // 5. Browse Pending Appointments
         else if (inputArray.get(0).equals("5")) {
             System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
         }
+        // 6. Browse Upcoming Appointments
         else if (inputArray.get(0).equals("6")) {
         }
+        // 7. View your wish list
         else if (inputArray.get(0).equals("7")) {
             System.out.println(clientUserManager.getCurrentUser().getWishList().toString());
+            System.out.println("Test showing wish list");
             System.out.println("USER: " + clientUserManager.getCurrentUser());
-        } // view lending list
+        }
+        // 8. view lending list
         else if (inputArray.get(0).equals("8")) {
             System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
         }
-
+        // 9. Request to add an item
         else if (inputArray.get(0).equals("9")) {
             ArrayList<String> input = PromptPresenter.takeInputLineByLine(REQUEST_TO_ADD_ITEM_PROMPT);
             itemListManager.createAnItem(input.get(0),input.get(1),input.get(2));
             System.out.println("Please wait while an admin approves of your added item!");
             run();
         }
-
+        // 10. Request admin to unfreeze account
         else if (inputArray.get(0).equals("10")) {
         }
-
+        // 11. View your Threshold limits
         else if (inputArray.get(0).equals("11")) {
             System.out.println(ThresholdManager.getAllUserThresholds(clientUserManager.getCurrentUser().getUserName()));
         }
-
-        else if (inputArray.get(0).equals("12")) {
+        // log out
+        else {
             curw.saveToFile(CLIENT_USER_FILE,clientUserManager);
             StartMenuSystem startMenuSystem = new StartMenuSystem();
             startMenuSystem.run();
