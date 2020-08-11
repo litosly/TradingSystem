@@ -68,6 +68,19 @@ public class ItemListManager {
         return false;
     }
 
+//    public boolean removeItem(String id) {
+//        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+//            for (Item item: clientUser.getPendingItemList().getItems()) {
+//                if (item.getItemId().equals(id)) {
+//                    clientUser.addToInventory(item);
+//                    clientUser.getPendingItemList().getItems().remove(item);
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+
     public void showAllUserInventories() {
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
             System.out.println(clientUser.toString());

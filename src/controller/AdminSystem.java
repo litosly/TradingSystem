@@ -132,6 +132,13 @@ public class AdminSystem implements InputProcessable{
                     ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);
                     createNewAdminUser(signupadmininput.get(0), signupadmininput.get(1));
                 case "11":
+                    System.out.println("Undo Pending Appointment");
+                    run();
+                case "12":
+                    System.out.println("Undo Pending Items");
+                    removePendingItems();
+                    run();
+                case "13":
                     clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
                     StartMenuSystem startMenuSystem = new StartMenuSystem();
                     startMenuSystem.run();
@@ -160,6 +167,21 @@ public class AdminSystem implements InputProcessable{
         } else {run();}
     }
 
+    private void removePendingItems() throws IOException, ClassNotFoundException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        if (itemListManager.showAllPendingItem()) {
+            System.out.println("please type in the id of the item to remove");
+            String input = br.readLine();
+            if (itemListManager.approveItem(input)) {
+                System.out.println("Item approved.");
+                clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+                run();
+            } else {
+                System.out.println("somethign is wrong, please try again.");
+                approvePendingItem();
+            }
+        } else {run();}
+    }
 
     public void createNewAdminUser(String username, String password) throws IOException {
         if(adminUserManager.signUpAdminUser(username, password)){
