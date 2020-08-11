@@ -22,7 +22,6 @@ public class InitialAdminSystem extends AdminSystem implements InputProcessable{
         this.adminUserManager = adminUserManager;
     }
 
-    // TODO: CURRENTLY DOESN'T USE ADMIN SYSTEM RUN BUT I WILL MAKE A MODULE WHERE YOU CAN ADD NEW PROMPTS AND RESUSE ADMIN SYSTEM's
     @Override
     public void run() throws IOException, ClassNotFoundException {
         //super.run();

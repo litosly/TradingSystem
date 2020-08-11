@@ -4,7 +4,7 @@ Type the corresponding '#' to choose your option
 3. View Recently Traded Items
 4. View Most Frequent Trade Partners
 5. Browse Pending Appointments
-6. Browse Upcoming Appointments
+6. Browse Inventory
 7. View your wish list
 8. View your lending list
 9. Request to add an item

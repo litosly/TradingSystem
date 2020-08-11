@@ -10,14 +10,8 @@ import java.util.List;
 
 public class AdminUserManager implements Serializable {
 
-    // TODO: why do we need current admin user and a list? what if more than 2 are logged in?
     private AdminUserList adminUserList;
     private AdminUser currentAdminUser;
-
-    // OLD EDEN CODE
-    /*public AdminUserManager(String adminUserListCSV){
-        adminUserList = createAdminUserFromCSV(adminUserListCSV);
-    } */
 
     public AdminUserManager(AdminUserList adminUserList){
         this.adminUserList = adminUserList;

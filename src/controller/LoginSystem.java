@@ -31,19 +31,20 @@ public class LoginSystem implements InputProcessable{
 
     //reference ReadWriteEx project
     public void run() throws IOException, ClassNotFoundException {
-
         processInput(PromptPresenter.takeInputLineByLine(LOGIN_PROMPT));
-
     }
 
     public void processInput(ArrayList<String> inputArray) throws IOException, ClassNotFoundException {
         String username = inputArray.get(0);
         String password = inputArray.get(1);
         if(inputArray.get(2).equals("1")){
-                adminLogin(username, password);
+            System.out.println("Showing all admin account");
+            adminUserManager.printAllAdminUsers();
+
+            adminLogin(username, password);
         }
         else if(inputArray.get(2).equals("2")){
-                clientLogin(username, password);
+            clientLogin(username, password);
         }
     }
 
@@ -60,7 +61,7 @@ public class LoginSystem implements InputProcessable{
                 as.run();
             }
         }else {
-            System.out.println("Incorrect Username / Password, Please try again");
+            System.out.println("Incorrect Username / Password for Admin, Please try again");
             run();
         }
     }

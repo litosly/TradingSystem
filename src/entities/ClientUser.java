@@ -17,35 +17,8 @@ public class ClientUser extends User {
     private int numLent = 0;
     private int incompleteLimit = 3;
     private int transactionLimit = 7;
+//    private
 
-    /*public ClientUser(String userName,
-                      String password,
-                      ItemList wishList,
-                      ItemList inventory,
-                      ItemList pendingItemList,
-                      TransactionTicketList history,
-                      TransactionTicketList pendingTransaction,
-                      AppointmentList appointmentList,
-                      String accountStatus,
-                      int numBurrowed,
-                      int numLent,
-                      int incompleteLimit,
-                      int transactionLimit) {
-        super(userName, password);
-        this.wishList = wishList;
-        this.inventory = inventory;
-        this.pendingItemList = pendingItemList;
-        this.history = history;
-        this.pendingTransaction = pendingTransaction;
-        this.appointmentList = appointmentList;
-        this.accountStatus = accountStatus;
-        this.numBurrowed = numBurrowed;
-        this.numLent = numLent;
-        this.incompleteLimit = incompleteLimit;
-        this.transactionLimit = transactionLimit;
-    }
-
-     */
 
     public ClientUser(String userName, String password) {
         super(userName, password);

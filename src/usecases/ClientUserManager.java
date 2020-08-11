@@ -53,22 +53,6 @@ public class ClientUserManager implements Serializable {
         return true;
     }
 
-    /*
-    public void add(ClientUser clientUser) {
-        clientUserList.addToAllClientUser(clientUser);
-        if (clientUser.getAccountStatus().equals("active")) {
-            clientUserList.addToActiveUser(clientUser);
-        }
-        else if (clientUser.getAccountStatus().equals("frozen")) {
-            clientUserList.addToFrozenUser(clientUser);
-        }
-        else if (clientUser.getAccountStatus().equals("pending")) {
-            clientUserList.addToPendingUser(clientUser);
-        }
-        logger.log(Level.INFO, "Added a client use to list");
-    }
-
-     */
 
     public void showPendingUsers() {
         if (clientUserList.getPendingUser().isEmpty()) {
@@ -89,7 +73,7 @@ public class ClientUserManager implements Serializable {
             }
         }
     }
-
+    // For Admin Account
     public void changeUserStatusTo(ClientUser user, String status) {
         user.setAccountStatus(status);
     }
