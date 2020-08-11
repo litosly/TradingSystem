@@ -70,15 +70,15 @@ public class TradingSystem implements InputProcessable{
         System.out.println("please type in the id of the item to approve");
         String input = br.readLine();
         if(itemListManager.addItemToWishList(input)) {
-            numTry = 0;
+            this.numTry = 0;
             System.out.println("Wishlist updated.");
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             run();
         }
-        else if (numTry < maxNumTry) {
+        else if (this.numTry < this.maxNumTry) {
             System.out.println("No ID matches your input, try again.");
+            this.numTry ++;
             addItemToWishlist();
-            numTry ++;
         } else{
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);

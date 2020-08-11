@@ -25,11 +25,10 @@ public class ItemList implements Serializable {
         }
         for (Item itemSelected: items) {
             if (item.getItemId().equals(itemSelected.getItemId())) {
-                System.out.println("You added an item already in the list!");
+                System.out.println("Added item already in the list!");
             }
             else {
                 items.add(item);
-                System.out.println("work???");
             }
 
         }
