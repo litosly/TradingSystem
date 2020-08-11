@@ -36,7 +36,7 @@ public class FileReadAndWrite {
     public final static String FREEZE_PROMPT = "database/freeze_prompt.txt";
     public final static String UNFREEZE_PROMPT = "database/unfreeze_prompt.txt";
     //Transactions Prompts
-    public final static String GET_PENDING_TRANSACTION_PROMPT = "getPendingTransactionPrompt.txt";
+    public final static String GET_PENDING_TRANSACTION_PROMPT = "database/getPendingTransactionsPrompt.txt";
 
     //public final static String APPOINTMENTS_FILE = "appointments.csv";
     public final static String APPOINTMENTS_FILE = "./src/database/appointments.ser";

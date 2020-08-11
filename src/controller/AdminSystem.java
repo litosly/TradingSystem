@@ -49,6 +49,8 @@ public class AdminSystem implements InputProcessable{
                     break;
                 case "3":
                     //review pending transactions
+                    System.out.println("Displaying all client users");
+                    clientUserManager.printAllUsers();
                     ArrayList<String> input = PromptPresenter.takeInputLineByLine(GET_PENDING_TRANSACTION_PROMPT);
                     transactionTicketManager.getPendingTransactionTicketByUser(input.get(0));
                     break;
@@ -134,6 +136,7 @@ public class AdminSystem implements InputProcessable{
                     startMenuSystem.run();
                     break;
             }
+            run();
         } catch (NullPointerException n) {
             System.out.println("It is empty");
             run();
