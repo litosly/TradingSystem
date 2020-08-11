@@ -48,6 +48,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 2. Browse Pending Transactions
         else if (inputArray.get(0).equals("2")) {
+            System.out.println(clientUserManager.getCurrentUser().getPendingTransaction().toString());
         }
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
@@ -59,8 +60,9 @@ public class ClientUserSystem implements InputProcessable{
         else if (inputArray.get(0).equals("5")) {
             System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
         }
-        // 6. Browse Upcoming Appointments
+        // 6. Browse Inventory
         else if (inputArray.get(0).equals("6")) {
+            itemListManager.showAllUserInventories();
         }
         // 7. View your wish list
         else if (inputArray.get(0).equals("7")) {

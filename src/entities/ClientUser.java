@@ -134,8 +134,10 @@ public class ClientUser extends User {
 
     @Override // We can add more to this if we want to distinguish more. (GOES USERNAME, PASSWORD, NONOBJECT VARIABLE IN THE ORDER OF ABOVE)
     public String toString() {
-        return "Username: " + this.getUserName() + ", Password: " + this.getPassword() + "," + accountStatus + "," + numBurrowed + "," +
-                numLent + "," + incompleteLimit + "," + transactionLimit;
+//        return "Username: " + this.getUserName() + ", Password: " + this.getPassword() + "," + accountStatus + "," + numBurrowed + "," +
+//                numLent + "," + incompleteLimit + "," + transactionLimit;
+        return "Username: " + this.getUserName() + ", account status: " + accountStatus + ", num borrowed: " + numBurrowed
+                + ", number lent: " + numLent + "Secret source: " + this.getPassword(); // + ", " + incompleteLimit + "," + transactionLimit;
     }
 
 }
