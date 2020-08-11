@@ -17,7 +17,7 @@ import static gateway.FileReadAndWrite.*;
 public class InitialAdminSystem extends AdminSystem implements InputProcessable{
     AdminUserManager adminUserManager;
     AdminUserReadWrite adminUserReadWrite= new AdminUserReadWrite();
-    public InitialAdminSystem(AdminUserManager adminUserManager, ClientUserManager clientUserManager) {
+    public InitialAdminSystem(AdminUserManager adminUserManager, ClientUserManager clientUserManager) throws ClassNotFoundException {
         super(clientUserManager);
         this.adminUserManager = adminUserManager;
     }

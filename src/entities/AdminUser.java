@@ -20,6 +20,6 @@ public class AdminUser extends User {
 
     @Override
     public String toString() {
-        return "IsInitialAdminUser: " + this.isInitialAdminUser + ", Username: " + this.getUserName() + ", Password: " + this.getPassword();
+        return "Admin Username: " + this.getUserName() + ", Password: " + this.getPassword() + "IsInitialAdminUser: " + this.isInitialAdminUser;
     }
 }

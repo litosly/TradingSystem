@@ -27,7 +27,7 @@ public class AdminSystem implements InputProcessable{
     AdminUserReadWrite adminUserReadWrite = new AdminUserReadWrite();
     AdminUserManager adminUserManager = adminUserReadWrite.createClientUserManagerFromFile(ADMIN_USER_FILE);
 
-    public AdminSystem(ClientUserManager clientUserManager) {
+    public AdminSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
     }
