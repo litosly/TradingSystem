@@ -38,9 +38,6 @@ public class LoginSystem implements InputProcessable{
         String username = inputArray.get(0);
         String password = inputArray.get(1);
         if(inputArray.get(2).equals("1")){
-            System.out.println("Showing all admin account");
-            adminUserManager.printAllAdminUsers();
-
             adminLogin(username, password);
         }
         else if(inputArray.get(2).equals("2")){

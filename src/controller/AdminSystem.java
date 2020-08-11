@@ -86,10 +86,6 @@ public class AdminSystem implements InputProcessable{
                         thresholdManager.changeGlobalThresholdValue(input5.get(0), newValue);
                     }
                     else if (thresholdMenuInput.get(0).equals("6")) {
-                        //6. return to previous page
-//                        clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-//                        StartMenuSystem startMenuSystem = new StartMenuSystem();
-//                        startMenuSystem.run();
                         run();
                     }
                 case "5":
@@ -130,6 +126,9 @@ public class AdminSystem implements InputProcessable{
                     run();
                 case "9":
                     run();
+                case "10":
+                    ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);
+                    createNewAdminUser(signupadmininput.get(0), signupadmininput.get(1));
                 case "11":
                     clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
                     StartMenuSystem startMenuSystem = new StartMenuSystem();
@@ -160,5 +159,15 @@ public class AdminSystem implements InputProcessable{
     }
 
 
+    public void createNewAdminUser(String username, String password) throws IOException {
+        if(adminUserManager.signUpAdminUser(username, password)){
+            System.out.println("Admin User Account Created: " + username);
+            adminUserReadWrite.saveToFile(ADMIN_USER_FILE, adminUserManager);
+        } else{
+            System.out.println("Cannot Create Admin User Account, please try again.");
+            ArrayList<String> input = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);
+            createNewAdminUser(input.get(0), input.get(1));
+        }
+    }
 }
 
