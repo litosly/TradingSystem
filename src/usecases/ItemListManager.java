@@ -1,5 +1,6 @@
 package usecases;
 
+import entities.Appointment;
 import entities.ClientUser;
 import entities.Item;
 import entities.ItemList;
@@ -80,6 +81,23 @@ public class ItemListManager {
         }
         return false;
     }
+
+    public boolean removeAppointment(String id) {
+        boolean removeFlg = false;
+        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+            for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
+                if (appointment.getId().equals(id)) {
+                    System.out.println("About to remove the pending appointment");
+                    clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
+                    System.out.println(clientUser.toString());
+                    System.out.println(clientUser.getPendingAppointments().toString());
+                    return true;
+                }
+            }
+        }
+        return removeFlg;
+    }
+
 
     public void showAllUserInventories() {
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {

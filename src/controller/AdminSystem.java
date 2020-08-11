@@ -186,7 +186,17 @@ public class AdminSystem implements InputProcessable{
 
     private void removePendingAppointment() throws IOException, ClassNotFoundException {
         clientUserManager.printAllUsers();
-        clientUserManager.getCurrentUser();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("please type in the id of the appointment to remove pending appointments");
+        String input = br.readLine();
+        if (itemListManager.removeAppointment(input)) {
+            System.out.println("Appointment removed.");
+            clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            run();
+        } else {
+            System.out.println("somethign is wrong, please try again.");
+            removePendingItems();
+        }
     }
 
     public void createNewAdminUser(String username, String password) throws IOException {

@@ -8,7 +8,6 @@ import java.util.UUID;
 
 public class AppointmentList implements Serializable {
     private List<Appointment> appointmentList;
-    // TODO: what is the point of this id
     private String id;
 
     public AppointmentList(){
@@ -28,11 +27,11 @@ public class AppointmentList implements Serializable {
     }
 
     public List<Appointment> getAppointmentList(){
-        return appointmentList;
+        return this.appointmentList;
     }
 
     public String getId(){
-        return id;
+        return this.id;
     }
 
     public void addToAppointment(Appointment appointment){
@@ -49,10 +48,12 @@ public class AppointmentList implements Serializable {
     }
 
     public String toString() {
+        StringBuilder out = new StringBuilder();
         if (!appointmentList.isEmpty()) {
             for (Appointment app : appointmentList) {
-                return app.toString();
+                out.append(app.toString()).append("\n");
             }
+            return out.toString();
         }
         return "Empty list.";
     }

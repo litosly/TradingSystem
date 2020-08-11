@@ -70,6 +70,7 @@ public class ClientUserManager implements Serializable {
         } else {
             for (ClientUser user: clientUserList.getAllClientUser()) {
                 System.out.println(user.toString());
+                System.out.println(user.getPendingAppointments().toString());
             }
         }
     }
