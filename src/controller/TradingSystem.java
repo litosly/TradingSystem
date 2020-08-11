@@ -94,8 +94,13 @@ public class TradingSystem implements InputProcessable{
         System.out.println("Please type in your item id to complete the process.");
         String input = br.readLine();
         if (itemListManager.findItemByItemId(inputArray.get(0)) != null && itemListManager.findItemByItemId(input) != null) {
-            Appointment appointment = tradeManager.trade(itemListManager.findItemByItemId(input),
-                    itemListManager.findItemByItemId(inputArray.get(0)), inputArray.get(1),inputArray.get(2));
+            // Creating a new trade object for trading
+            Appointment appointment = tradeManager.trade(
+                    itemListManager.findItemByItemId(input),
+                    itemListManager.findItemByItemId(inputArray.get(0)),
+                    inputArray.get(1),
+                    inputArray.get(2)
+            );
             clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
             itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);

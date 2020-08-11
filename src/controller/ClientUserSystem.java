@@ -65,7 +65,6 @@ public class ClientUserSystem implements InputProcessable{
         // 7. View your wish list
         else if (inputArray.get(0).equals("7")) {
             System.out.println(clientUserManager.getCurrentUser().getWishList().toString());
-            System.out.println("Test showing wish list");
             System.out.println("USER: " + clientUserManager.getCurrentUser());
         }
         // 8. view lending list
@@ -92,6 +91,7 @@ public class ClientUserSystem implements InputProcessable{
             StartMenuSystem startMenuSystem = new StartMenuSystem();
             startMenuSystem.run();
         }
+        run();
     }
 
     private void trading() throws IOException, ClassNotFoundException {
