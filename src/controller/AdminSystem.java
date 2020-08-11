@@ -24,6 +24,8 @@ public class AdminSystem implements InputProcessable{
     TransactionTicketManager transactionTicketManager;
     ItemListManager itemListManager ;
     ClientUserReadWrite clientUserReadWrite = new ClientUserReadWrite();
+    AdminUserReadWrite adminUserReadWrite = new AdminUserReadWrite();
+    AdminUserManager adminUserManager = adminUserReadWrite.createClientUserManagerFromFile(ADMIN_USER_FILE);
 
     public AdminSystem(ClientUserManager clientUserManager) {
         this.clientUserManager = clientUserManager;
@@ -83,14 +85,13 @@ public class AdminSystem implements InputProcessable{
                         double newValue = Double.parseDouble(input5.get(1));
                         thresholdManager.changeGlobalThresholdValue(input5.get(0), newValue);
                     }
-
-                    else if (thresholdMenuInput.get(0).equals("9")) {
-                        //9. logout
-                        clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-                        StartMenuSystem startMenuSystem = new StartMenuSystem();
-                        startMenuSystem.run();
+                    else if (thresholdMenuInput.get(0).equals("6")) {
+                        //6. return to previous page
+//                        clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+//                        StartMenuSystem startMenuSystem = new StartMenuSystem();
+//                        startMenuSystem.run();
+                        run();
                     }
-                    break;
                 case "5":
                     clientUserManager.printAllUsers();
                     run();
@@ -107,6 +108,7 @@ public class AdminSystem implements InputProcessable{
                     clientUserList.removeFromFrozenUser(toUnfreeze);
                     clientUserList.addToActiveUser(toUnfreeze);
                     //... add methods here
+                    System.out.println("Client user status successfully changed to unfrozen");
                 case "7":
                     //7. Freeze User
                     ClientUserList clientUserList2 = new ClientUserList();
@@ -119,17 +121,15 @@ public class AdminSystem implements InputProcessable{
                     ClientUser toFreeze = clientUserManager.getUserByUsername(input7.get(0));
                     clientUserList2.removeFromPendingUser(toFreeze);
                     clientUserList2.addToFrozenUser(toFreeze);
-
+                    System.out.println("Client user status successfully changed to Frozen");
                 case "8":
                     //show admin users
-                    AdminUserReadWrite adminUserReadWrite = new AdminUserReadWrite();
-                    AdminUserManager adminUserManager = adminUserReadWrite.createClientUserManagerFromFile(ADMIN_USER_FILE);
+                    System.out.println("Showing All admin users");
+
                     adminUserManager.printAllAdminUsers();
                     run();
-                    break;
                 case "9":
-
-                    break;
+                    run();
                 case "11":
                     clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
                     StartMenuSystem startMenuSystem = new StartMenuSystem();

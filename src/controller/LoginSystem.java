@@ -56,15 +56,6 @@ public class LoginSystem implements InputProcessable{
             // Same Interface for Initial and Non-initial Admin Users
             AdminSystem as = new AdminSystem(clientUserManager);
             as.run();
-
-//            if(adminUserManager.isCurrentAdminUserInitial()){
-//                InitialAdminSystem ias= new InitialAdminSystem(adminUserManager, clientUserManager);
-//                ias.run();
-//            }else {
-//                AdminSystem as = new AdminSystem(clientUserManager);
-//                as.run();
-//            }
-
         }else {
             System.out.println("Incorrect Username / Password for Admin, Please try again");
             run();

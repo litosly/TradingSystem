@@ -4,4 +4,4 @@ Type the corresponding '#' to choose your option
 3. Add Universal Threshold(Type in thresholdName, new threshold value)
 4. Remove Universal Threshold(Type in threshold name)
 5. Change Universal Threshold(Type in thresholdName, new threshold  value)
-9. Log Out
+6. Return To Previous Menu
