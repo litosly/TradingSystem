@@ -85,13 +85,12 @@ public class AdminSystem implements InputProcessable{
                         double newValue = Double.parseDouble(input5.get(1));
                         thresholdManager.changeGlobalThresholdValue(input5.get(0), newValue);
                     }
-                    else if (thresholdMenuInput.get(0).equals("6")) {
+                    else {
                         run();
                     }
                 case "5":
                     clientUserManager.printAllUsers();
                     run();
-                    break;
                 case "6":
                     //6. Unfreeze User
                     ClientUserList clientUserList = new ClientUserList();
@@ -105,6 +104,7 @@ public class AdminSystem implements InputProcessable{
                     clientUserList.addToActiveUser(toUnfreeze);
                     //... add methods here
                     System.out.println("Client user status successfully changed to unfrozen");
+                    run();
                 case "7":
                     //7. Freeze User
                     ClientUserList clientUserList2 = new ClientUserList();
