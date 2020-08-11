@@ -28,7 +28,6 @@ public class LoginSystem implements InputProcessable{
 
     public LoginSystem() throws ClassNotFoundException {
     }
-
     //reference ReadWriteEx project
     public void run() throws IOException, ClassNotFoundException {
         processInput(PromptPresenter.takeInputLineByLine(LOGIN_PROMPT));

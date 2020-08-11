@@ -19,6 +19,7 @@ public class StartMenuSystem {
                 LoginSystem loginSystem = new LoginSystem();
                 loginSystem.run();
             } catch (Exception e) {
+                System.out.println("Unexpected Error occurs while trying to enter Login system");
                 System.exit(0);
             }
         });
@@ -27,6 +28,7 @@ public class StartMenuSystem {
                 SignUpSystem signUpSystem = new SignUpSystem();
                 signUpSystem.run();
             } catch (Exception e) {
+                System.out.println("Unexpected Error occurs while trying to enter Signup system");
                 System.exit(0);
             }
         });
@@ -35,6 +37,7 @@ public class StartMenuSystem {
                 VisitorSystem visitorSystem = new VisitorSystem();
                 visitorSystem.run();
             } catch (Exception e) {
+                System.out.println("Unexpected Error occurs while trying to enter visitor system");
                 System.exit(0);
             }
         });
