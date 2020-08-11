@@ -10,4 +10,5 @@ Type the corresponding '#' to choose your option
 9. Request to add an item
 10. Request admin to unfreeze account
 11. View your Threshold limits
-12. Log Out
+12. Recommended Items to Lend
+13. Log Out

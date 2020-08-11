@@ -87,6 +87,21 @@ public class ClientUserSystem implements InputProcessable{
         else if (inputArray.get(0).equals("11")) {
             System.out.println(ThresholdManager.getAllUserThresholds(clientUserManager.getCurrentUser().getUserName()));
         }
+        // 12. Recommended Items to Lend
+        else if (inputArray.get(0).equals("12")) {
+            itemListManager.showAllUserInventories(); // browse inventory
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Please Select Items you like");
+            String input = br.readLine();
+            if (itemListManager.findUserByItemId(input) != null){
+                ClientUser userWithItem = itemListManager.findUserByItemId(input);
+                recommendItemsforLending(userWithItem);
+            } else{
+                System.out.println("Invalid Item Id, please try again");
+                run();
+            }
+        }
+
         // log out
         else {
             curw.saveToFile(CLIENT_USER_FILE,clientUserManager);
@@ -99,5 +114,14 @@ public class ClientUserSystem implements InputProcessable{
     private void trading() throws IOException, ClassNotFoundException {
         TradingSystem tradingSystem = new TradingSystem(clientUserManager);
         tradingSystem.run();
+    }
+
+    private void recommendItemsforLending(ClientUser userWithItem) {
+        if (userWithItem.getWishList() != null) {
+            System.out.println("You can try lending him/her the following items since they are in his/her wish list:");
+            System.out.println(userWithItem.getWishList());
+        } else {
+            System.out.println("Try lend anything to the User! (He/She does not have anything in their mind.");
+        }
     }
 }
