@@ -1,0 +1,2 @@
+Please type in your username you would like to make:
+Please type in your password you would like to make:

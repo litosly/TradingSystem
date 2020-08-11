@@ -1,0 +1,4 @@
+id,itemName,description,ownerName,type
+1,book1,clean architecture textbook,user1,book
+2,sunglasses,brand new sunglasses,user2,sunglasses
+3,iphone, iphone 4s,user1,phone

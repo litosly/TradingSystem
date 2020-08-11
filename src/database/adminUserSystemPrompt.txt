@@ -1,0 +1,11 @@
+Type the corresponding '#' to choose your option
+1. View Pending Users
+2. View Pending Items
+3. Review Pending Transactions
+4. Change Thresholds
+5. View all client users
+6. Unfreeze User
+7. Freeze User
+8. Display All Admins
+9. View User Threshold
+11. Log Out

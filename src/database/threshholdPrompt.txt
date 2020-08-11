@@ -1,0 +1,7 @@
+Type the corresponding '#' to choose your option
+1. Add Default Threshold to Specific User(Type in userid)
+2. Change Specific User Threshold (Type in userid, threshold name, new threshold value)
+3. Add Universal Threshold(Type in thresholdName, new threshold value)
+4. Remove Universal Threshold(Type in threshold name)
+5. Change Universal Threshold(Type in thresholdName, new threshold  value)
+9. Log Out

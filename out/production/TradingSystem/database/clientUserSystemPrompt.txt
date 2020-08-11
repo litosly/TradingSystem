@@ -1,0 +1,13 @@
+Type the corresponding '#' to choose your option
+1. Look for things to trade
+2. Browse Pending Transactions
+3. View Recently Traded Items
+4. View Most Frequent Trade Partners
+5. Browse Pending Appointments
+6. Browse Upcoming Appointments
+7. View your wish list
+8. View your lending list
+9. Request to add an item
+10. Request admin to unfreeze account
+11. View your Threshold limits
+12. Log Out

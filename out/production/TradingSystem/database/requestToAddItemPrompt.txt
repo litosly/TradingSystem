@@ -1,0 +1,3 @@
+Item Name:
+Description:
+Type(e.g. phone, laptop, book):

@@ -1,0 +1,9 @@
+username,password,accountStatus,incompleteLimit,transactionLimit,numLent,numBorrowed
+user1,password,active,3,7,0,0
+jack,jack,active,3,7,0,0
+jack1,jack1,active,3,7,0,0
+david,tan,active,3,7,0,0
+a,b,active,3,7,0,0
+jack,jac,active,3,7,0,0
+u1,pas,pending,3,7,0,1
+mcgill,123,active,3,7,0,0

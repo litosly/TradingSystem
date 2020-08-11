@@ -1,0 +1,5 @@
+Type the corresponding '#' to choose your option
+1. Add an item to wishlist
+2. Request to Trade
+3. Request to Borrow
+4. Return to Client menu

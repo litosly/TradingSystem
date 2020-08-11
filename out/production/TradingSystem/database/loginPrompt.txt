@@ -1,0 +1,3 @@
+username:
+password:
+type '1' for admin or '2' for client:
