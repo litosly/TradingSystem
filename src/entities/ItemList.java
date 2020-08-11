@@ -8,9 +8,6 @@ import java.util.UUID;
 public class ItemList implements Serializable {
     private List<Item> items;
 
-    // TODO: what is the reason of this id
-
-
     public ItemList(){
         this.items = new ArrayList<>();
     }

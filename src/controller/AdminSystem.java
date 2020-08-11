@@ -132,11 +132,11 @@ public class AdminSystem implements InputProcessable{
                     ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);
                     createNewAdminUser(signupadmininput.get(0), signupadmininput.get(1));
                 case "11":
-                    System.out.println("Undo Pending Appointment");
+                    System.out.println("Remove Pending Appointment");
                     removePendingAppointment();
                     run();
                 case "12":
-                    System.out.println("Undo Pending Items");
+                    System.out.println("Remove Pending Items");
                     removePendingItems();
                     run();
                 case "13":

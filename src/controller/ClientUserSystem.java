@@ -117,7 +117,7 @@ public class ClientUserSystem implements InputProcessable{
     }
 
     private void recommendItemsforLending(ClientUser userWithItem) {
-        if (userWithItem.getWishList() != null) {
+        if (!userWithItem.getWishList().isEmpty()) {
             System.out.println("You can try lending him/her the following items since they are in his/her wish list:");
             System.out.println(userWithItem.getWishList());
         } else {

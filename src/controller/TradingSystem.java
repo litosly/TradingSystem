@@ -43,22 +43,27 @@ public class TradingSystem implements InputProcessable{
          * 1. Add an item to wishlist
          * 2. Request to Trade
          * 3. Request to Borrow
+         * 4. Confirm an Appointment
          * 4. Return to Client menu
          * */
         if (inputArray.get(0).equals("1")) {
             itemListManager.showAllUserInventories();
             addItemToWishlist();
         }
-        if (inputArray.get(0).equals("2")) {
+        else if (inputArray.get(0).equals("2")) {
             itemListManager.showAllUserInventories();
             requestToTrade();
         }
-        if (inputArray.get(0).equals("3")) {
+        else if (inputArray.get(0).equals("3")) {
             itemListManager.showAllUserInventories();
             requestToBurrow();
         }
+        else if (inputArray.get(0).equals("4")) {
+            itemListManager.showAllUserInventories();
+            confirmAppointment();
+        }
         // Going back
-        if (inputArray.get(0).equals("4")) {
+        else {
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);
             clientUserSystem.run();
@@ -135,5 +140,8 @@ public class TradingSystem implements InputProcessable{
         }
     }
 
+    public void confirmAppointment() throws IOException, ClassNotFoundException {
+        System.out.println("Confirm Appointment");
+    }
 
 }
