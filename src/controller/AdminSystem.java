@@ -133,6 +133,7 @@ public class AdminSystem implements InputProcessable{
                     createNewAdminUser(signupadmininput.get(0), signupadmininput.get(1));
                 case "11":
                     System.out.println("Undo Pending Appointment");
+                    removePendingAppointment();
                     run();
                 case "12":
                     System.out.println("Undo Pending Items");
@@ -181,6 +182,11 @@ public class AdminSystem implements InputProcessable{
                 removePendingItems();
             }
         } else {run();}
+    }
+
+    private void removePendingAppointment() throws IOException, ClassNotFoundException {
+        clientUserManager.printAllUsers();
+        clientUserManager.getCurrentUser();
     }
 
     public void createNewAdminUser(String username, String password) throws IOException {
