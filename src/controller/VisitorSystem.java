@@ -44,8 +44,10 @@ public class VisitorSystem implements InputProcessable{
         if(loginSuccess){
             System.out.println("Visitor Login Success!");
             //launch VisitorBrowsing System
-            ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);
-            clientUserSystem.run();
+            VisitorBrowsingSystem visitorBrowsingSystem = new VisitorBrowsingSystem(clientUserManager);
+            visitorBrowsingSystem.run();
+//            ClientUserSystem clientUserSystem = new ClientUserSystem(clientUserManager);
+//            clientUserSystem.run();
         }else {
             System.out.println("No Visitor Account Available, please contact admin");
             run();
