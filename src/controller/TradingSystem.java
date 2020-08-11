@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import gateway.ClientUserReadWrite;
 
 import static gateway.FileReadAndWrite.*;
 
@@ -20,6 +21,7 @@ public class TradingSystem implements InputProcessable{
     private TradeManager tradeManager;
     private ItemListManager itemListManager ;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
+    ClientUserReadWrite clientUserReadWrite = new ClientUserReadWrite();
     private int numTry = 0;
     private int maxNumTry = 2;
 
@@ -59,7 +61,6 @@ public class TradingSystem implements InputProcessable{
             requestToBurrow();
         }
         else if (inputArray.get(0).equals("4")) {
-            itemListManager.showAllUserInventories();
             confirmAppointment();
         }
         // Going back
@@ -120,8 +121,6 @@ public class TradingSystem implements InputProcessable{
     public void requestToBurrow() throws IOException, ClassNotFoundException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
-//        System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
-//        String input = br.readLine();
         if (itemListManager.findItemByItemId(inputArray.get(0)) != null){ //&& itemListManager.findItemByItemId(input) != null) {
             Appointment appointment = tradeManager.borrow(
                     itemListManager.findItemByItemId(inputArray.get(0)),
@@ -141,7 +140,18 @@ public class TradingSystem implements InputProcessable{
     }
 
     public void confirmAppointment() throws IOException, ClassNotFoundException {
-        System.out.println("Confirm Appointment");
+        System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("please type in the id of the appointment to confirm");
+        String input = br.readLine();
+        if (itemListManager.confirmAppointment(input)) {
+            System.out.println("Appointment confirmed.");
+            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+                run();
+            } else {
+                System.out.println("somethign is wrong, please try again.");
+                confirmAppointment();
+            }
     }
 
 }

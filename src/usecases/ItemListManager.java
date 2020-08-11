@@ -83,7 +83,6 @@ public class ItemListManager {
     }
 
     public boolean removeAppointment(String id) {
-        boolean removeFlg = false;
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
@@ -95,7 +94,21 @@ public class ItemListManager {
                 }
             }
         }
-        return removeFlg;
+        return false;
+    }
+
+    public boolean confirmAppointment(String id) {
+        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+            for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
+                if (appointment.getId().equals(id)) {
+                    System.out.println("About to confirm the pending appointment");
+                    clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
+                    clientUser.getConfirmedAppointments().addToAppointment(appointment);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

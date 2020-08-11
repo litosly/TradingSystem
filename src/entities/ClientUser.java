@@ -54,7 +54,7 @@ public class ClientUser extends User {
     public int getNumLent() { return numLent; }
 
     public AppointmentList getConfirmedAppointments() {
-        return confirmedAppointments;
+        return this.confirmedAppointments;
     }
 
     public ItemList getPendingItemList() {
@@ -66,7 +66,7 @@ public class ClientUser extends User {
     }
 
     public TransactionTicketList getPendingTransaction() {
-        return pendingTransaction;
+        return this.pendingTransaction;
     }
 
     public String getAccountStatus() {
@@ -101,9 +101,9 @@ public class ClientUser extends User {
 
     public void addToPendingItem(Item item) {pendingItemList.addToItemList(item);}
 
-    public void addToPendingAppointment(Appointment appointment) {pendingAppointments.addToAppointment(appointment);}
+    public void addToPendingAppointment(Appointment appointment) {this.pendingAppointments.addToAppointment(appointment);}
 
-    public void addToConfirmedAppointment(Appointment appointment) {confirmedAppointments.addToAppointment(appointment);}
+    public void addToConfirmedAppointment(Appointment appointment) {this.confirmedAppointments.addToAppointment(appointment);}
 
     @Override // We can add more to this if we want to distinguish more. (GOES USERNAME, PASSWORD, NONOBJECT VARIABLE IN THE ORDER OF ABOVE)
     public String toString() {
