@@ -68,18 +68,18 @@ public class ItemListManager {
         return false;
     }
 
-//    public boolean removeItem(String id) {
-//        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-//            for (Item item: clientUser.getPendingItemList().getItems()) {
-//                if (item.getItemId().equals(id)) {
-//                    clientUser.addToInventory(item);
-//                    clientUser.getPendingItemList().getItems().remove(item);
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
+    public boolean removeItem(String id) {
+        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+            for (Item item: clientUser.getPendingItemList().getItems()) {
+                if (item.getItemId().equals(id)) {
+                    System.out.println("About to remove the pending item");
+                    clientUser.getPendingItemList().getItems().remove(item);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public void showAllUserInventories() {
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {

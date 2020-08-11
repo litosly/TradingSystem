@@ -172,13 +172,13 @@ public class AdminSystem implements InputProcessable{
         if (itemListManager.showAllPendingItem()) {
             System.out.println("please type in the id of the item to remove");
             String input = br.readLine();
-            if (itemListManager.approveItem(input)) {
-                System.out.println("Item approved.");
+            if (itemListManager.removeItem(input)) {
+                System.out.println("Item removed.");
                 clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
                 run();
             } else {
                 System.out.println("somethign is wrong, please try again.");
-                approvePendingItem();
+                removePendingItems();
             }
         } else {run();}
     }
