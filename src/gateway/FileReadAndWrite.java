@@ -5,16 +5,11 @@ import java.io.*;
 // TODO: document it
 public class FileReadAndWrite {
 
-    //public final static String CLIENT_USER_FILE = "client_users.csv";
     public final static String CLIENT_USER_FILE = "./src/database/client_users.ser";
-    //public final static String ADMIN_USER_FILE = "admin_users.csv";
     public final static String ADMIN_USER_FILE = "./src/database/admin_users.ser";
     public final static String LOGIN_PROMPT = "database/loginPrompt.txt";
     public final static String SIGNUP_PROMPT = "database/signUpPrompt.txt";
     public final static String APPOINTENTS_PROMPT = "database/AppointmentUserSystemPrompt.txt";
-    public final static String INVENTORY_ITEMS_FILE = "database/inventory_items.csv";
-    public final static String WISHLIST_ITEM_FILE = "database/wishlist_items.csv";
-    public final static String PENDING_ITEMS_FILE = "database/pending_items.csv";
     public final static String CLIENT_USER_SYSTEM_PROMPT = "database/clientUserSystemPrompt.txt";
     public final static String ADMIN_USER_SYSTEM_PROMPT = "database/adminUserSystemPrompt.txt";
     public final static String INITIAL_ADMIN_USER_SYSTEM_PROMPT = "database/initialAdminUserPrompt.txt";
@@ -42,6 +37,9 @@ public class FileReadAndWrite {
     public final static String APPOINTMENTS_FILE = "./src/database/appointments.ser";
     public final static String PENDING_TRANSACTIONS_FILE = "database/pending_transactions.csv";
     public final static String HISTORY_TRANSACTIONS_FILE = "database/history_transactions.csv";
+
+    // Visitor System Prompts
+    public final static String VISITOR_PROMPT = "database/VISITOR_PROMT.txt";
 
     private final static String filePath = "./src/";
 
