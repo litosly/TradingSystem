@@ -39,6 +39,7 @@ public class ClientUserList implements Serializable {
 
     public void addToActiveUser(ClientUser clientUser) {
         activeUser.add(clientUser);
+        clientUser.setAccountStatus("active");
     }
 
     public void addToPendingUser(ClientUser clientUser) {
@@ -47,6 +48,7 @@ public class ClientUserList implements Serializable {
 
     public void addToFrozenUser(ClientUser clientUser) {
         frozenUser.add(clientUser);
+        clientUser.setAccountStatus("frozen");
     }
 
     public void removeFromActiveUser(ClientUser clientUser) {

@@ -25,6 +25,7 @@ public class AdminSystem implements InputProcessable{
     ItemListManager itemListManager ;
     ClientUserReadWrite clientUserReadWrite = new ClientUserReadWrite();
     AdminUserReadWrite adminUserReadWrite = new AdminUserReadWrite();
+    ThresholdManager thresholdManager = new ThresholdManager();
     AdminUserManager adminUserManager = adminUserReadWrite.createClientUserManagerFromFile(ADMIN_USER_FILE);
 
     public AdminSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
@@ -57,7 +58,7 @@ public class AdminSystem implements InputProcessable{
                     transactionTicketManager.getPendingTransactionTicketByUser(input.get(0));
                     break;
                 case "4":  // Thresholds
-                    ThresholdManager thresholdManager = new ThresholdManager();
+
                     ArrayList<String> thresholdMenuInput = PromptPresenter.takeInput(THRESHOLD_PROMPT);
                     if (thresholdMenuInput.get(0).equals("1")) {
                         //1. Add Specific Threshhold to Specific User (String user)
@@ -93,6 +94,7 @@ public class AdminSystem implements InputProcessable{
                     run();
                 case "6":
                     //6. Unfreeze User
+                    clientUserManager.printAllUsers();
                     ClientUserList clientUserList = new ClientUserList();
                     List<ClientUser> frozen_list = clientUserList.getFrozenUser();
                     for (ClientUser user: frozen_list){
@@ -102,11 +104,11 @@ public class AdminSystem implements InputProcessable{
                     ClientUser toUnfreeze = clientUserManager.getUserByUsername(input6.get(0));
                     clientUserList.removeFromFrozenUser(toUnfreeze);
                     clientUserList.addToActiveUser(toUnfreeze);
-                    //... add methods here
                     System.out.println("Client user status successfully changed to unfrozen");
                     run();
                 case "7":
                     //7. Freeze User
+                    clientUserManager.printAllUsers();
                     ClientUserList clientUserList2 = new ClientUserList();
                     List<ClientUser> pending_list2 = clientUserList2.getPendingUser();
                     // Prints out a list of pending users.
@@ -121,10 +123,10 @@ public class AdminSystem implements InputProcessable{
                 case "8":
                     //show admin users
                     System.out.println("Showing All admin users");
-
                     adminUserManager.printAllAdminUsers();
                     run();
                 case "9":
+//                    thresholdManager.getAllUserThresholds();
                     run();
                 case "10":
                     ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);
