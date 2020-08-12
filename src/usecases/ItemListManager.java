@@ -59,6 +59,9 @@ public class ItemListManager {
                 if (item.getItemId().equals(id)) {
                     clientUser.addToInventory(item);
                     clientUser.getPendingItemList().getItems().remove(item);
+                    if (clientUser.getInventory().getItems().size() >= 3){
+                        clientUser.setAccountStatus("VIP");
+                    }
                     return true;
                 }
             }
@@ -115,14 +118,16 @@ public class ItemListManager {
                             appointment.getId());
 
                     // Add to both users transaction ticket
-//                    ClientUser clientUser1 = new ClientUser()
-                    System.out.println(findUserByUsername(appointment.getUsername1()).toString());
-                    System.out.println(findUserByUsername(appointment.getUsername2()).toString());
-//                    clientUser.getPendingTransaction().addToTransactionTicketList(transactionTicket);
-
+                    ClientUser clientUser1 = findUserByUsername(appointment.getUsername1());
+                    ClientUser clientUser2 = findUserByUsername(appointment.getUsername2());
+                    clientUser1.getPendingTransaction().addToTransactionTicketList(transactionTicket);
+                    clientUser2.getPendingTransaction().addToTransactionTicketList(transactionTicket);
+//                    System.out.println(clientUser1.getPendingTransaction().toString());
+//                    System.out.println(clientUser2.getPendingTransaction().toString());
 
                     // Finally REMOVE appointment in transaction id
-//                    clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
+                    clientUser1.getPendingAppointments().getAppointmentList().remove(appointment);
+                    clientUser2.getPendingAppointments().getAppointmentList().remove(appointment);
                     return true;
                 }
             }

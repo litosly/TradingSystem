@@ -1,0 +1,9 @@
+ClientUser:
+user, password
+jack, jack
+litos, 123
+test, 123
+
+AdminUser:
+admin, password
+admin1, 123

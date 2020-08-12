@@ -13,7 +13,7 @@ public class ClientUser extends User {
     private AppointmentList confirmedAppointments;
     private AppointmentList pendingAppointments;
     private String accountStatus = "active"; //we have active, pending (to be frozen by admin), and frozen;
-    private int numBurrowed = 0;             //the fourth status could be invisible (phase 2).
+    private int numBurrowed = 0;             //the fourth status is VIP
     private int numLent = 0;
     private int incompleteLimit = 3;
     private int transactionLimit = 7;
@@ -40,7 +40,7 @@ public class ClientUser extends User {
     }
 
     public ItemList getInventory() {
-        return inventory;
+        return this.inventory;
     }
 
     public int getTransactionLimit() {
