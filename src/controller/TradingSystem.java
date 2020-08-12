@@ -141,6 +141,10 @@ public class TradingSystem implements InputProcessable{
 
     public void confirmAppointment() throws IOException, ClassNotFoundException {
         System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
+        if (clientUserManager.getCurrentUser().getPendingAppointments().getAppointmentList().isEmpty()){
+            System.out.println("No Current Pending Appointment");
+            run();
+        }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("please type in the id of the appointment to confirm");
         String input = br.readLine();

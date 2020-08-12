@@ -116,11 +116,13 @@ public class ItemListManager {
 
                     // Add to both users transaction ticket
 //                    ClientUser clientUser1 = new ClientUser()
-                    clientUser.getPendingTransaction().addToTransactionTicketList(transactionTicket);
+                    System.out.println(findUserByUsername(appointment.getUsername1()).toString());
+                    System.out.println(findUserByUsername(appointment.getUsername2()).toString());
+//                    clientUser.getPendingTransaction().addToTransactionTicketList(transactionTicket);
 
 
                     // Finally REMOVE appointment in transaction id
-                    clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
+//                    clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
                     return true;
                 }
             }
@@ -153,6 +155,15 @@ public class ItemListManager {
                 if (item.getItemId().equals(id)) {
                     return clientUser;
                 }
+            }
+        }
+        return null;
+    }
+
+    public ClientUser findUserByUsername(String username) {
+        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+            if (clientUser.getUserName().equals(username)) {
+                return clientUser;
             }
         }
         return null;
