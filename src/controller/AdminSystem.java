@@ -45,18 +45,18 @@ public class AdminSystem implements InputProcessable{
                 case "1":
                     //show pending users
                     clientUserManager.showPendingUsers();
-                    break;
+                    run();
                 case "2":
                     // show pending items
                     approvePendingItem();
-                    break;
+                    run();
                 case "3":
                     //review pending transactions
                     System.out.println("Displaying all client users");
                     clientUserManager.printAllUsers();
                     ArrayList<String> input = PromptPresenter.takeInputLineByLine(GET_PENDING_TRANSACTION_PROMPT);
                     transactionTicketManager.getPendingTransactionTicketByUser(input.get(0));
-                    break;
+                    run();
                 case "4":  // Thresholds
 
                     ArrayList<String> thresholdMenuInput = PromptPresenter.takeInput(THRESHOLD_PROMPT);

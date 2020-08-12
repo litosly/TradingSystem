@@ -32,7 +32,7 @@ public class TransactionTicketList implements Serializable {
     }
 
     public void addToTransactionTicketList(TransactionTicket transactionTicket){
-        transactionTicketList.add(transactionTicket);
+        this.transactionTicketList.add(transactionTicket);
     }
 
     // David's Code (I think we need this to remove Expired tickets)

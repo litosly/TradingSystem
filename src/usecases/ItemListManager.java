@@ -1,9 +1,6 @@
 package usecases;
 
-import entities.Appointment;
-import entities.ClientUser;
-import entities.Item;
-import entities.ItemList;
+import entities.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -98,12 +95,32 @@ public class ItemListManager {
     }
 
     public boolean confirmAppointment(String id) {
+        /**
+         * Confirm Appointment that are pending,
+         * First extract info in the pending appointment
+         * Then create new transaction using the info
+         * Put the transaction ticket into both clients' inventory
+         * Finally delete the transaction
+         * */
         for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
                     System.out.println("About to confirm the pending appointment");
+
+                    TransactionTicket transactionTicket = new TransactionTicket(
+                            appointment.getItem1(),
+                            appointment.getTime(),
+                            appointment.getUsername1(), // Proposer
+                            appointment.getUsername2(), // Receiver
+                            appointment.getId());
+
+                    // Add to both users transaction ticket
+//                    ClientUser clientUser1 = new ClientUser()
+                    clientUser.getPendingTransaction().addToTransactionTicketList(transactionTicket);
+
+
+                    // Finally REMOVE appointment in transaction id
                     clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
-                    clientUser.getConfirmedAppointments().addToAppointment(appointment);
                     return true;
                 }
             }

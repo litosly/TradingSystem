@@ -82,7 +82,7 @@ public class ClientUserManager implements Serializable {
     }
 
     public ClientUser getCurrentUser(){
-        return currentUser;
+        return this.currentUser;
     }
 
     public boolean isExist(String username) {

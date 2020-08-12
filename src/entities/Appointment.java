@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Appointment implements Serializable {
     private String appointmentId;
-    // TODO: make it into a LocalDateTime
+    // Time is not constraint to numerical value so that we can have "anytime" query from user
     private String time; //"year-month-day-time" ex."2020-07-09-13:00"
     private String address;
     private String proposer; //user1 username
