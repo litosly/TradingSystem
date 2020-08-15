@@ -30,6 +30,7 @@ public class AppointmentList implements Serializable {
         return this.appointmentList;
     }
 
+
     public String getId(){
         return this.id;
     }

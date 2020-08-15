@@ -11,12 +11,12 @@ public class TransactionTicketList implements Serializable {
 
     public TransactionTicketList(){
         this.transactionTicketList = new ArrayList<>();
-        id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
     }
 
     public TransactionTicketList(List<TransactionTicket> transactionTickets){
         this.transactionTicketList = transactionTickets;
-        id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
     }
     public TransactionTicketList(String id, List<TransactionTicket> transactionTickets){
         this.transactionTicketList = transactionTickets;
@@ -24,11 +24,11 @@ public class TransactionTicketList implements Serializable {
     }
 
     public List<TransactionTicket> getTransactionTicketList(){
-        return transactionTicketList;
+        return this.transactionTicketList;
     }
 
     public String getId(){
-        return id;
+        return this.id;
     }
 
     public void addToTransactionTicketList(TransactionTicket transactionTicket){
@@ -37,7 +37,7 @@ public class TransactionTicketList implements Serializable {
 
     // David's Code (I think we need this to remove Expired tickets)
     public void removeTransactionTicketList(TransactionTicket transactionTicket){
-        transactionTicketList.remove(transactionTicket);
+        this.transactionTicketList.remove(transactionTicket);
     }
 
     

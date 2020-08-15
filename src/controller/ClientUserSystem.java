@@ -1,8 +1,6 @@
 package controller;
 
-import entities.ClientUser;
-import entities.Item;
-import entities.ItemList;
+import entities.*;
 import gateway.AppointmentListReadWrite;
 import gateway.ClientUserReadWrite;
 import presenter.PromptPresenter;
@@ -15,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import static gateway.FileReadAndWrite.*; // Import all final vals/paths
 
@@ -48,7 +47,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 2. Browse Pending Transactions
         else if (inputArray.get(0).equals("2")) {
-            System.out.println(clientUserManager.getCurrentUser().getPendingTransaction().toString());
+            printPendingTransactions();
         }
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
@@ -122,6 +121,14 @@ public class ClientUserSystem implements InputProcessable{
             System.out.println(userWithItem.getWishList());
         } else {
             System.out.println("Try lend anything to the User! (He/She does not have anything in their mind.");
+        }
+    }
+
+    // pending transactions
+    public void printPendingTransactions() {
+        List<TransactionTicket> ticketList = clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList();
+        for (TransactionTicket ticket : ticketList){
+            System.out.println(ticket.toString());
         }
     }
 }
