@@ -73,11 +73,11 @@ public class TradingSystem implements InputProcessable{
 
     private void addItemToWishlist() throws IOException, ClassNotFoundException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("please type in the id of the item to approve");
         String input = br.readLine();
         if(itemListManager.addItemToWishList(input)) {
             this.numTry = 0;
-            System.out.println("Wishlist updated.");
+            System.out.println("Wishlist updated. Current wishlist: ");
+            System.out.println(clientUserManager.getCurrentUser().getWishList().toString());
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             run();
         }

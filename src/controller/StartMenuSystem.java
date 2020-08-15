@@ -20,6 +20,7 @@ public class StartMenuSystem {
                 loginSystem.run();
             } catch (Exception e) {
                 System.out.println("Unexpected Error occurs while trying to enter Login system");
+                e.printStackTrace();
                 System.exit(0);
             }
         });

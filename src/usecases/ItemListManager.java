@@ -180,7 +180,6 @@ public class ItemListManager {
                 if (item.getItemId().equals(id)) {
                     ClientUser userToAdd = clientUserManager.getCurrentUser();
                     userToAdd.addToWishList(item);
-                    System.out.println("Successfully added to wish List for testing");
                     return true;
                 }
             }
