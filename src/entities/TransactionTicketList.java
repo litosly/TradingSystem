@@ -40,6 +40,6 @@ public class TransactionTicketList implements Serializable {
         transactionTicketList.remove(transactionTicket);
     }
 
-
+    
 
 }
