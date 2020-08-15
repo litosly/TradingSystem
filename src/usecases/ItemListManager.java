@@ -234,4 +234,8 @@ public class ItemListManager {
     public void addItem(Item item) {
         itemList.addToItemList(item);
     }
+
+    public boolean confirmTransaction(String input, ClientUser currentUser) {
+        return true;
+    }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import entities.Appointment;
+import entities.TransactionTicket;
 import gateway.ClientUserReadWrite;
 import presenter.PromptPresenter;
 import usecases.ClientUserManager;
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
+
 import gateway.ClientUserReadWrite;
 
 import static gateway.FileReadAndWrite.*;
@@ -162,23 +165,30 @@ public class TradingSystem implements InputProcessable{
     }
 
     public void confirmTransaction() throws IOException, ClassNotFoundException {
-        System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
-        if (clientUserManager.getCurrentUser().getPendingAppointments().getAppointmentList().isEmpty()){
-            System.out.println("No Current Pending Appointment");
+        // Print Pending Transactions
+        List<TransactionTicket> ticketList = clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList();
+        for (TransactionTicket ticket : ticketList) {
+            System.out.println(ticket.toString());
+        }
+
+        if (clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList().isEmpty()){
+            System.out.println("No Current Pending Transaction");
             run();
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("please type in the id of the appointment to confirm");
+        System.out.println("please type in the id of the transaction to confirm");
         String input = br.readLine();
-        if (itemListManager.confirmAppointment(input)) {
-            System.out.println("Appointment confirmed.");
+        if (itemListManager.confirmTransaction(input, clientUserManager.getCurrentUser())) {
+            System.out.println("Transaction confirmed.");
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             run();
         } else {
-            System.out.println("somethign is wrong, please try again.");
+            System.out.println("something is wrong, please try again.");
             confirmAppointment();
         }
     }
+
+
 
 
 }
