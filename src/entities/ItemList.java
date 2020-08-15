@@ -27,9 +27,9 @@ public class ItemList implements Serializable {
         }
         // Check Duplicate
         for (Item itemSelected: items) {
-            System.out.println(itemSelected);
             if (item.getItemId().equals(itemSelected.getItemId())) {
                 duplicateFlg = true;
+                break;
             }
         }
         // Add in item only if no duplicate found
