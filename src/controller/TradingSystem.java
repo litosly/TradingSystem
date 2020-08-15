@@ -63,6 +63,9 @@ public class TradingSystem implements InputProcessable{
         else if (inputArray.get(0).equals("4")) {
             confirmAppointment();
         }
+        else if (inputArray.get(0).equals("5")) {
+            confirmTransaction();
+        }
         // Going back
         else {
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
@@ -157,5 +160,25 @@ public class TradingSystem implements InputProcessable{
                 confirmAppointment();
             }
     }
+
+    public void confirmTransaction() throws IOException, ClassNotFoundException {
+        System.out.println(clientUserManager.getCurrentUser().getPendingAppointments().toString());
+        if (clientUserManager.getCurrentUser().getPendingAppointments().getAppointmentList().isEmpty()){
+            System.out.println("No Current Pending Appointment");
+            run();
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("please type in the id of the appointment to confirm");
+        String input = br.readLine();
+        if (itemListManager.confirmAppointment(input)) {
+            System.out.println("Appointment confirmed.");
+            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            run();
+        } else {
+            System.out.println("somethign is wrong, please try again.");
+            confirmAppointment();
+        }
+    }
+
 
 }

@@ -3,4 +3,5 @@ Type the corresponding '#' to choose your option
 2. Request to Trade
 3. Request to Borrow
 4. Confirm an Appointment
-5. Return to Client menu
+5. Confirm an Transaction
+6. Return to Client menu
