@@ -1,0 +1,18 @@
+Progress:
+1. I am able to build and fix some bugs in the meeting & confirm-transaction system for permanent trading. This was doen through the confirmTransaction() function 
+in the TradingSystem.java file and confirmTransaction() function in ItemListManager.ajva file (I understand for the latter function I implemented a huge and clustered 
+function but this is the quick-and-dirty way to get it work on my end so I would like to keep it for now and refactor it once I got time)
+2. Bugs fixed in ClientUser kept wishlist system
+3. Most Recent Trading and Most frequent trading partner functionality are implemented. 
+4. Some basic refactoring of the username vs. ClientUser to avoid aliases as per our discussion.
+5. Some basic refactoring of the Presenters & Controllers. 
+(Note that part 4 and 5 are not in the attached zip file as I still need to debug for the new architecture)
+
+TODOs: 
+1. Keep on working on the Time system in the project based on day number (or maybe java.datetime)
+2. Finish threshold value controller and presenters.
+3. Keep on working on final Refactoring of the general architecture. 
+
+I also noted that when I used another computer with a slightly different settings, the project starts to fail in compilation with some wired bugs, 
+but mostly due to filelocations and some directory problem. I would keep on looking into this issues for the final version but I really apologize if 
+it could not properly run from your side due to those erros.

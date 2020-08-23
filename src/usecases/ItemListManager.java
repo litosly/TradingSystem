@@ -10,11 +10,11 @@ public class ItemListManager {
     private ClientUserManager clientUserManager;
 
     // David's code change. changed because I want to move Read and Write away from usecase and into gateway.
-    public ItemListManager(ClientUserManager clientUserManager){
+    public ItemListManager(ClientUserManager clientUserManager) {
         this.clientUserManager = clientUserManager;
     }
 
-    public ItemList getItemList(){
+    public ItemList getItemList() {
         return this.itemList;
     }
 
@@ -39,7 +39,7 @@ public class ItemListManager {
     // TODO: Implement Strategy design pattern
     public boolean showAllPendingItem() {
         boolean notEmpty = false;
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getAllClientUser()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getAllClientUser()) {
             if (!clientUser.getPendingItemList().isEmpty()) {
                 System.out.println(clientUser.getPendingItemList().toString());
                 notEmpty = true;
@@ -54,12 +54,12 @@ public class ItemListManager {
     }
 
     public boolean approveItem(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-            for (Item item: clientUser.getPendingItemList().getItems()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Item item : clientUser.getPendingItemList().getItems()) {
                 if (item.getItemId().equals(id)) {
                     clientUser.addToInventory(item);
                     clientUser.getPendingItemList().getItems().remove(item);
-                    if (clientUser.getInventory().getItems().size() >= 3){
+                    if (clientUser.getInventory().getItems().size() >= 3) {
                         clientUser.setAccountStatus("VIP");
                     }
                     return true;
@@ -70,8 +70,8 @@ public class ItemListManager {
     }
 
     public boolean removeItem(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-            for (Item item: clientUser.getPendingItemList().getItems()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Item item : clientUser.getPendingItemList().getItems()) {
                 if (item.getItemId().equals(id)) {
                     System.out.println("About to remove the pending item");
                     clientUser.getPendingItemList().getItems().remove(item);
@@ -83,8 +83,8 @@ public class ItemListManager {
     }
 
     public boolean removeAppointment(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-            for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
                     System.out.println("About to remove the pending appointment");
                     clientUser.getPendingAppointments().getAppointmentList().remove(appointment);
@@ -105,8 +105,8 @@ public class ItemListManager {
          * Put the transaction ticket into both clients' inventory
          * Finally delete the transaction
          * */
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-            for (Appointment appointment: clientUser.getPendingAppointments().getAppointmentList()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
                     System.out.println("About to confirm the pending appointment");
 
@@ -137,14 +137,14 @@ public class ItemListManager {
 
 
     public void showAllUserInventories() {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             System.out.println(clientUser.toString());
             System.out.println(clientUser.getInventory().toString());
         }
     }
 
     public Item findItemByItemId(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Item item : clientUser.getInventory().getItems()) {
                 if (item.getItemId().equals(id)) {
                     return item;
@@ -155,7 +155,7 @@ public class ItemListManager {
     }
 
     public ClientUser findUserByItemId(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Item item : clientUser.getInventory().getItems()) {
                 if (item.getItemId().equals(id)) {
                     return clientUser;
@@ -166,7 +166,7 @@ public class ItemListManager {
     }
 
     public ClientUser findUserByUsername(String username) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             if (clientUser.getUserName().equals(username)) {
                 return clientUser;
             }
@@ -175,8 +175,8 @@ public class ItemListManager {
     }
 
     public boolean addItemToWishList(String id) {
-        for (ClientUser clientUser: clientUserManager.getClientUserList().getActiveUser()) {
-            for (Item item: clientUser.getInventory().getItems()) {
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Item item : clientUser.getInventory().getItems()) {
                 if (item.getItemId().equals(id)) {
                     ClientUser userToAdd = clientUserManager.getCurrentUser();
                     userToAdd.addToWishList(item);
@@ -188,11 +188,10 @@ public class ItemListManager {
     }
 
 
-
-    public ItemList getItemListByUser(String username){
+    public ItemList getItemListByUser(String username) {
         ItemList itemList = new ItemList();
-        for(Item item: this.itemList.getItems()){
-            if(item.getOwnerName().equalsIgnoreCase(username)){
+        for (Item item : this.itemList.getItems()) {
+            if (item.getOwnerName().equalsIgnoreCase(username)) {
                 itemList.getItems().add(item);
             }
         }
@@ -201,7 +200,7 @@ public class ItemListManager {
 
     public ArrayList<Item> getMatchedItems(String regEx, String type) {
         ArrayList<Item> filteredList = new ArrayList<>();
-        for (Item item: itemList.getItems()) {
+        for (Item item : itemList.getItems()) {
             if (item.getItemName().toLowerCase().matches(regEx.toLowerCase()) && item.getType().equals(type)) {
                 filteredList.add(item);
             }
@@ -211,7 +210,7 @@ public class ItemListManager {
 
     public ArrayList<Item> getAvailableItems(String type) {
         ArrayList<Item> filteredList = new ArrayList<>();
-        for(Item item: itemList.getItems()) {
+        for (Item item : itemList.getItems()) {
             if (type == null) {
                 filteredList.add(item);
             } else if (item.getType().equals(type)) {
@@ -235,7 +234,87 @@ public class ItemListManager {
         itemList.addToItemList(item);
     }
 
-    public boolean confirmTransaction(String input, ClientUser currentUser) {
-        return true;
+    public boolean confirmTransaction(String id, ClientUser curUser) {
+        /**
+         * Confirm Transaction that are pending,
+         * In: transaction id, curUser who is confirming
+         * Out: Boolean result whether confirmation is complete
+         *
+         * First extract info in the pending Transaction
+         * Then Set ticket isUser1Confirmed/isUser2Confirmed to be true
+         * Check if both confirmed
+         * Append to Transaction history upon both user approved and
+         * 1. Remove item from wishlist if it's there
+         * 2. Remove item from lending item
+         * 3. put into most recent 3 transactions in both users history
+         * 4. update most frequent 3 trading partners
+         * 5. update system time (TODO)
+         * 6. calculate for return (TODO)
+         * Finally delete the pending transaction
+         * */
+
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (TransactionTicket transactionTicket : clientUser.getPendingTransaction().getTransactionTicketList()) {
+                if (transactionTicket.getAppointmentId().equals(id) && clientUser.getUserName().equals(curUser.getUserName())) {
+                    System.out.println("About to confirm the pending transaction");
+                    // curUser is the one who is confirming
+                    // clientUser is the other one
+                    // Confirm transaction by updating isUser1Confirmed/isUser2Confirmed
+                    if (transactionTicket.confirm(curUser.getUserName(), true)) {
+                        if (transactionTicket.getIsUser2Confirmed()) {
+                            if (transactionTicket.getIsUser1Confirmed()) {
+                                // ------------- transaction all confirmed -----------
+                                // Put into history
+                                System.out.println("Putting Transaction in Transaction History");
+                                curUser.getHistory().addToTransactionTicketList(transactionTicket);
+                                clientUser.getHistory().addToTransactionTicketList(transactionTicket);
+
+                                // 1. remove item from wishlist
+                                // first find if it's in wishlist
+//                                System.out.println("Removing Item from User WishLists");
+//                                for (ClientUser tempUser: clientUserManager.getClientUserList().getActiveUser()) {
+//                                    List<Item> wishedItems = tempUser.getWishList().getItems();
+//                                    for (Item wishedItem : wishedItems){
+//                                        if (wishedItem.equals(transactionTicket.getItem1())){
+//                                            tempUser.getWishList().getItems().remove(wishedItem);
+//                                        }
+//                                    }
+//                                }
+
+                                // 2. Remove item from lending item
+//                                System.out.println("Removing Item from User Lending List");
+//                                clientUser.getInventory().getItems().remove(transactionTicket.getItem1());
+//                                if (transactionTicket.getItem2() != null){
+//                                    curUser.getInventory().getItems().remove(transactionTicket.getItem2());
+//                                }
+
+                                // 3. put into most recent 3 transactions in both users history
+//                                System.out.println("Updating User Transaction History");
+                                // Note: this will be done when printing out
+
+                                // 4. put into most frequent trade partner
+//                                System.out.println("Updating trade partner frequency list");
+//                                curUser.getTradePartners().add(clientUser);
+//                                clientUser.getTradePartners().add(curUser);
+
+                                // Finally delete the pending transaction
+                                System.out.println("Deleteing the pending transactions");
+                                curUser.getPendingTransaction().getTransactionTicketList().remove(transactionTicket);
+                                clientUser.getPendingTransaction().getTransactionTicketList().remove(transactionTicket);
+                                return true;
+                            } else {
+                                System.out.println("Waiting for the other guy to confirm1");
+                                return true;
+                            }
+                        } else {
+                            System.out.println("Waiting for the other guy to confirm2");
+                            return true;
+                        }
+                    }
+
+                }
+            }
+        }
+        return false;
     }
 }

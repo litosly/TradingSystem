@@ -32,9 +32,6 @@ public class ClientUserSystem implements InputProcessable{
     }
 
     public void run() throws ClassNotFoundException, IOException {
-//        inventoryListManager = new ItemListManager(FileReadAndWrite.readFromFile(INVENTORY_ITEMS_FILE));
-//        clientUserManager.getCurrentUser().setInventory(inventoryListManager.getItemListByUser(clientUserManager.getCurrentUser().getUserName()));
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Welcome to the Client System! At any time, 'exit' to quit the system.");
         processInput(PromptPresenter.takeInput(CLIENT_USER_SYSTEM_PROMPT));
     }
@@ -51,6 +48,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
+            System.out.println(clientUserManager.getCurrentUser().getHistory().getTransactionTicketList().toString());
         }
         // 4. View Most Frequent Trade Partners
         else if (inputArray.get(0).equals("4")) {
