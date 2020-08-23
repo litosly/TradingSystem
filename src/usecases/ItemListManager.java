@@ -119,9 +119,11 @@ public class ItemListManager {
                             appointment.getUsername2(), // Receiver
                             appointment.getId());
 
-                    // Add to both users transaction ticket
+                    // Add to both users transaction ticket and confirmed appointment list
                     ClientUser Proposer = findUserByUsername(appointment.getUsername1());
                     ClientUser Receiver = findUserByUsername(appointment.getUsername2());
+                    Proposer.getConfirmedAppointments().addToAppointment(appointment);
+                    Receiver.getConfirmedAppointments().addToAppointment(appointment);
                     Proposer.getPendingTransaction().addToTransactionTicketList(transactionTicket);
                     Receiver.getPendingTransaction().addToTransactionTicketList(transactionTicket);
 
@@ -255,6 +257,10 @@ public class ItemListManager {
         TransactionTicket targettransactionTicket = null;
         ClientUser proposer = null;
         ClientUser receiver = null;
+        ClientUser otherUser;
+        Item item1 = null;
+        Item item2 = null;
+        Appointment confirmedAppointment = null;
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (TransactionTicket transactionTicket : clientUser.getPendingTransaction().getTransactionTicketList()) {
                 if (transactionTicket.getAppointmentId().equals(id)) {
@@ -272,15 +278,21 @@ public class ItemListManager {
         System.out.println("About to confirm the pending transaction");
         // Confirm cur user and the other user's identity
         if (curUser.getUserName().equals(proposer.getUserName())) {
-            ClientUser otherUser = receiver;
+            otherUser = receiver;
             System.out.println("Current User is proposer");
         } else {
-            ClientUser otherUser = proposer;
+            otherUser = proposer;
             System.out.println("Current User is receiver");
         }
         // Confirm transaction by updating isUser1Confirmed/isUser2Confirmed
         if (targettransactionTicket.confirm(curUser.getUserName(), true)) {
             System.out.println("CurUser Confirmed Transaction Successfully.");
+            confirmedAppointment = curUser.getConfirmedAppointments().getAppointmentList().get(0);
+            item1 = confirmedAppointment.getItem1();
+            item2 = confirmedAppointment.getItem2();
+        } else{
+            System.out.println("Confirm Transaction Failed");
+            return false;
         }
 
         // Check if both proposer and receiver has confirmed the transaction.
@@ -294,13 +306,35 @@ public class ItemListManager {
 
                 // 1. remove item from wishlist
                 // check if it's in wishlist
-                System.out.println("Removing Item from User WishLists");
-//                for (ClientUser tempUser: clientUserManager.getClientUserList().getActiveUser()) {
-//                    List<Item> wishedItems = tempUser.getWishList().getItems();
-//                    for (Item wishedItem : wishedItems){
-//                        if (wishedItem.equals(transactionTicket.getItem1())){
-//                            tempUser.getWishList().getItems().remove(wishedItem);
+                System.out.println("Removing Item(s) from User WishLists");
+                for (ClientUser tempUser: clientUserManager.getClientUserList().getActiveUser()) {
+                    List<Item> wishedItems = tempUser.getWishList().getItems();
+                    for (Item wishedItem : wishedItems) {
+                        if (wishedItem.equals(item1)) {
+                            tempUser.getWishList().getItems().remove(wishedItem);
+                        }
+                        if (wishedItem.equals(item2)){
+                            tempUser.getWishList().getItems().remove(wishedItem);
+                        }
+                    }
+                }
 
+
+                // 2. Remove item from lending item
+                System.out.println("Removing Item(s) from User Lending List");
+                otherUser.getInventory().getItems().remove(item1);
+                if (item2 != null){
+                    curUser.getInventory().getItems().remove(item2);
+                }
+
+
+                // Finally delete the pending transaction
+                System.out.println("Deleting the pending transactions");
+                curUser.getPendingTransaction().getTransactionTicketList().remove(targettransactionTicket);
+                otherUser.getPendingTransaction().getTransactionTicketList().remove(targettransactionTicket);
+                System.out.println("Deleting the confirmed appointments");
+                curUser.getConfirmedAppointments().getAppointmentList().remove(confirmedAppointment);
+                otherUser.getConfirmedAppointments().getAppointmentList().remove(confirmedAppointment);
                 return true;
             }
         }
@@ -308,49 +342,3 @@ public class ItemListManager {
         return true;
     }
 }
-
-
-
-
-
-//
-//                                        }
-//                                    }
-//                                }
-
-                                // 2. Remove item from lending item
-//                                System.out.println("Removing Item from User Lending List");
-//                                clientUser.getInventory().getItems().remove(transactionTicket.getItem1());
-//                                if (transactionTicket.getItem2() != null){
-//                                    curUser.getInventory().getItems().remove(transactionTicket.getItem2());
-//                                }
-
-                                // 3. put into most recent 3 transactions in both users history
-//                                System.out.println("Updating User Transaction History");
-                                // Note: this will be done when printing out
-
-                                // 4. put into most frequent trade partner
-//                                System.out.println("Updating trade partner frequency list");
-//                                curUser.getTradePartners().add(clientUser);
-//                                clientUser.getTradePartners().add(curUser);
-
-                                // Finally delete the pending transaction
-//                                System.out.println("Deleteing the pending transactions");
-//                                curUser.getPendingTransaction().getTransactionTicketList().remove(transactionTicket);
-//                                clientUser.getPendingTransaction().getTransactionTicketList().remove(transactionTicket);
-//                                return true;
-//                            } else {
-//                                System.out.println("Waiting for the other guy to confirm1");
-//                                return true;
-//                            }
-//                        } else {
-//                            System.out.println("Waiting for the other guy to confirm2");
-//                            return true;
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
-//        return false;
-//    }

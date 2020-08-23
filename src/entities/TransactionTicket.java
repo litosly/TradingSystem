@@ -33,7 +33,6 @@ public class TransactionTicket implements Serializable {
         this.item1 = item1;
     }
 
-
     public String getTime(){
         return time;
     }
