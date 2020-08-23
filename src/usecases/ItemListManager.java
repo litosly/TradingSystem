@@ -2,8 +2,8 @@ package usecases;
 
 import entities.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ItemListManager {
@@ -297,6 +297,7 @@ public class ItemListManager {
         if (targettransactionTicket.getIsUser1Confirmed()) {
             if (targettransactionTicket.getIsUser2Confirmed()) {
                 // ------------- transaction all confirmed -----------
+                targettransactionTicket.setIsCompleted(true);
                 // Put into history
                 System.out.println(" -- Putting Transaction in Transaction History");
                 proposer.getHistory().addToTransactionTicketList(targettransactionTicket);
@@ -345,5 +346,85 @@ public class ItemListManager {
         }
         System.out.println("Waiting For the other user to confirm");
         return true;
+    }
+
+
+    public ArrayList<TransactionTicket> getRecentTransactions(int numTransactions, ClientUser currentUser){
+        ArrayList<TransactionTicket> transactions = new ArrayList<>();
+        List<TransactionTicket> history = currentUser.getHistory().getTransactionTicketList();
+        if (numTransactions <= history.size()){
+            for (int i = 0; i<numTransactions; i++){
+                transactions.add(history.get(history.size()-i-1));
+            }
+        } else{
+            transactions.addAll(history);
+        }
+        return transactions;
+    }
+
+    public void printRecentTransactions(int numTransactions, ClientUser currentUser){
+        ArrayList<TransactionTicket> recentTransactions = getRecentTransactions(numTransactions, currentUser);
+        for (TransactionTicket transactionTicket: recentTransactions){
+            System.out.println(transactionTicket.toString());
+        }
+    }
+
+    public HashMap<String, Integer> getTradePartners(ClientUser currentUser){
+        String curUserName = currentUser.getUserName();
+        String partnerName = null;
+        HashMap<String, Integer> tradingPartners = new HashMap<>();
+        List<TransactionTicket> history = currentUser.getHistory().getTransactionTicketList();
+        for (TransactionTicket transactionTicket:history){
+            if (transactionTicket.getProposer().equals(curUserName)){
+                partnerName = transactionTicket.getReceiver();
+            }
+            else if (transactionTicket.getReceiver().equals(curUserName)){
+                partnerName = transactionTicket.getProposer();
+            }
+            // Add partner count
+            if (partnerName != null) {
+                // Increment Count of tradingPartner or insert if not seen before
+                int count = tradingPartners.getOrDefault(partnerName, 0);
+                tradingPartners.put(partnerName, count + 1);
+            }
+        }
+        return tradingPartners;
+    }
+
+    public void printTradingPartners(int numPartners, ClientUser currentUser){
+        HashMap<String, Integer> tradingPartners = getTradePartners(currentUser);
+        List<Entry<String, Integer>> greatest = findGreatest(tradingPartners, numPartners);
+        System.out.println("Top "+ numPartners +" Trading Partners:");
+        for (Entry<String, Integer> entry : greatest){
+            System.out.println(entry.getKey());
+        }
+    }
+
+    private static <K, V extends Comparable<? super V>> List<Entry<K, V>>
+    findGreatest(Map<K, V> map, int n)
+    {
+        Comparator<? super Entry<K, V>> comparator =
+                (Comparator<Entry<K, V>>) (e0, e1) -> {
+                    V v0 = e0.getValue();
+                    V v1 = e1.getValue();
+                    return v0.compareTo(v1);
+                };
+        PriorityQueue<Entry<K, V>> highest =
+                new PriorityQueue<>(n, comparator);
+        for (Entry<K, V> entry : map.entrySet())
+        {
+            highest.offer(entry);
+            while (highest.size() > n)
+            {
+                highest.poll();
+            }
+        }
+
+        List<Entry<K, V>> result = new ArrayList<>();
+        while (highest.size() > 0)
+        {
+            result.add(highest.poll());
+        }
+        return result;
     }
 }

@@ -48,10 +48,12 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
-            System.out.println(clientUserManager.getCurrentUser().getHistory().getTransactionTicketList().toString());
+//            System.out.println(clientUserManager.getCurrentUser().getHistory().getTransactionTicketList().toString());
+            itemListManager.printRecentTransactions(3, clientUserManager.getCurrentUser());
         }
         // 4. View Most Frequent Trade Partners
         else if (inputArray.get(0).equals("4")) {
+            itemListManager.printTradingPartners(3, clientUserManager.getCurrentUser());
         }
         // 5. Browse Pending Appointments
         else if (inputArray.get(0).equals("5")) {
@@ -98,7 +100,12 @@ public class ClientUserSystem implements InputProcessable{
                 run();
             }
         }
-
+        // 13. Get user History
+        else if (inputArray.get(0).equals("13")) {
+            for (TransactionTicket transactionTicket: clientUserManager.getCurrentUser().getHistory().getTransactionTicketList()){
+                System.out.println(transactionTicket.toString());
+            }
+        }
         // log out
         else {
             curw.saveToFile(CLIENT_USER_FILE,clientUserManager);

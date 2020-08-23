@@ -11,4 +11,5 @@ Type the corresponding '#' to choose your option
 10. Request admin to unfreeze account
 11. View your Threshold limits
 12. Recommended Items to Lend
-13. Log Out
+13. View User Transaction History
+14. Log Out
