@@ -179,7 +179,7 @@ public class TradingSystem implements InputProcessable{
         System.out.println("please type in the id of the transaction to confirm");
         String input = br.readLine();
         if (itemListManager.confirmTransaction(input, clientUserManager.getCurrentUser())) {
-            System.out.println("Transaction confirmed.");
+            System.out.println("Transaction confirmed by user.");
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             run();
         } else {
