@@ -2,113 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5aa8168-b241-454e-9fa5-8313c095fe16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TradingSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserAccounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/UserAccounts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/AppointmentUserSystemPrompt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/AppointmentUserSystemPrompt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/AppointmentUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/AppointmentUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/VISITOR_PROMT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/VISITOR_PROMT.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/addUserThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/addUserThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/adminUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/adminUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/admin_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/admin_users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/appointments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/appointments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/changeThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/changeThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/changeUserThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/changeUserThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/clientUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/clientUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/createAdminPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/createAdminPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/freeze_prompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/freeze_prompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/getPendingTransactionsPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/getPendingTransactionsPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/history_transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/history_transactions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/initialAdminUserPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/initialAdminUserPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/inventory_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/inventory_items.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/loginPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/loginPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/pending_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/pending_items.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/pending_transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/pending_transactions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/removeThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/removeThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/requestToAddItemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/requestToAddItemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/signUpPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/signUpPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/threshholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/threshholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/tradeSetUpPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/tradeSetUpPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/tradingSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/tradingSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/unfreeze_prompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/unfreeze_prompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/wishlist_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/wishlist_items.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TradingMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TradingMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/AdminSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AdminSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AppointmentManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AppointmentManagementSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AppointmentSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AppointmentSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/InitialAdminSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/InitialAdminSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/InputProcessable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/InputProcessable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/LoginSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/LoginSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SignUpSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SignUpSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/StartMenuSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/StartMenuSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/TradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TradingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/VisitorSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisitorSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/AppointmentUserSystemPrompt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AppointmentUserSystemPrompt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/AppointmentUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/AppointmentUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/VISITOR_PROMT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/VISITOR_PROMT.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/addUserThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/addUserThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/adminUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/adminUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/admin_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/admin_users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/appointments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/appointments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/changeThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/changeThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/changeUserThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/changeUserThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/clientUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/clientUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/client_users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client_users.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client_users.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/createAdminPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/createAdminPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/freeze_prompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/freeze_prompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/getPendingTransactionsPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/getPendingTransactionsPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/history_transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/history_transactions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/initialAdminUserPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/initialAdminUserPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/inventory_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/inventory_items.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/loginPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/loginPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/pending_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/pending_items.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/pending_transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/pending_transactions.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/removeThresholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/removeThresholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/requestToAddItemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/requestToAddItemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/signUpPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/signUpPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/threshholdPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/threshholdPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/tradeSetUpPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/tradeSetUpPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/tradingSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/tradingSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/unfreeze_prompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/unfreeze_prompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/wishlist_items.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/wishlist_items.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/AdminUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/AdminUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/AdminUserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/AdminUserList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/AppointmentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/AppointmentList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/ClientUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/ClientUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/ClientUserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/ClientUserList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/ItemList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/ItemList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/TransactionTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/TransactionTicket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/TransactionTicketList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/TransactionTicketList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/AdminUserReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/AdminUserReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/AppointmentListReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/AppointmentListReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/ItemListReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/ItemListReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/ThresholdReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/ThresholdReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/TransactionTicketReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/TransactionTicketReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presenter/PromptPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presenter/PromptPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presenter/PropertiesIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presenter/PropertiesIterator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/AdminUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/AdminUserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/AppointmentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/AppointmentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/ClientUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ClientUserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/usecases/ItemListManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ItemListManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/ThresholdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ThresholdManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/TradeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/TradeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usecases/TransactionTicketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/TransactionTicketManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,25 +58,29 @@
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
     <state x="632" y="340" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1598151581585" />
-    <state width="1750" height="234" key="GridCell.Tab.0.bottom" timestamp="1598151733518">
+    <state width="1750" height="234" key="GridCell.Tab.0.bottom" timestamp="1598152834909">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.bottom/0.23.1792.1017@0.23.1792.1017" timestamp="1598151733518" />
-    <state width="1750" height="234" key="GridCell.Tab.0.center" timestamp="1598151733517">
+    <state width="1750" height="234" key="GridCell.Tab.0.bottom/0.23.1792.1017@0.23.1792.1017" timestamp="1598152834909" />
+    <state width="1750" height="234" key="GridCell.Tab.0.center" timestamp="1598152834909">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.center/0.23.1792.1017@0.23.1792.1017" timestamp="1598151733517" />
-    <state width="1750" height="234" key="GridCell.Tab.0.left" timestamp="1598151733516">
+    <state width="1750" height="234" key="GridCell.Tab.0.center/0.23.1792.1017@0.23.1792.1017" timestamp="1598152834909" />
+    <state width="1750" height="234" key="GridCell.Tab.0.left" timestamp="1598152834908">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.left/0.23.1792.1017@0.23.1792.1017" timestamp="1598151733516" />
-    <state width="1750" height="234" key="GridCell.Tab.0.right" timestamp="1598151733517">
+    <state width="1750" height="234" key="GridCell.Tab.0.left/0.23.1792.1017@0.23.1792.1017" timestamp="1598152834908" />
+    <state width="1750" height="234" key="GridCell.Tab.0.right" timestamp="1598152834909">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.right/0.23.1792.1017@0.23.1792.1017" timestamp="1598151733517" />
+    <state width="1750" height="234" key="GridCell.Tab.0.right/0.23.1792.1017@0.23.1792.1017" timestamp="1598152834909" />
     <state x="384" y="113" key="SettingsEditor" timestamp="1598151512165">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
     <state x="384" y="113" key="SettingsEditor/0.23.1792.1017@0.23.1792.1017" timestamp="1598151512165" />
+    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1598153668937">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.23.1792.1017@0.23.1792.1017" timestamp="1598153668937" />
   </component>
 </project>
