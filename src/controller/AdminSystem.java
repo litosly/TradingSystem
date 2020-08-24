@@ -2,6 +2,7 @@ package controller;
 
 import entities.*;
 import gateway.ClientUserReadWrite;
+import gateway.FileReadAndWrite;
 import presenter.PromptPresenter;
 import usecases.AdminUserManager;
 import usecases.ClientUserManager;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 import static gateway.FileReadAndWrite.*;
+import gateway.ClientUserReadWrite;
 
 public class AdminSystem implements InputProcessable{
     ClientUserManager clientUserManager;
@@ -133,6 +135,7 @@ public class AdminSystem implements InputProcessable{
                     run();
                 case "9":
 //                    thresholdManager.getAllUserThresholds();
+                    clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE);
                     run();
                 case "10":
                     ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);

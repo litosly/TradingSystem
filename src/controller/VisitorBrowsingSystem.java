@@ -2,6 +2,7 @@ package controller;
 
 import entities.ClientUserList;
 import gateway.ClientUserReadWrite;
+import presenter.ItemListPresenter;
 import presenter.PromptPresenter;
 import usecases.ClientUserManager;
 import usecases.ItemListManager;
@@ -22,10 +23,12 @@ public class VisitorBrowsingSystem implements InputProcessable{
     private ClientUserManager clientUserManager;
     private ItemListManager itemListManager;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
+    private ItemListPresenter itemListPresenter;
 
     public VisitorBrowsingSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
+        this.itemListPresenter = new ItemListPresenter(clientUserManager);
     }
 
     public void run() throws ClassNotFoundException, IOException {
@@ -37,7 +40,7 @@ public class VisitorBrowsingSystem implements InputProcessable{
     public void processInput(ArrayList<String> inputArray) throws ClassNotFoundException, IOException {
         // 1. Browse Inventory
         if (inputArray.get(0).equals("1")) {
-            itemListManager.showAllUserInventories();
+            itemListPresenter.showAllUserInventories();
         }
         else if (inputArray.get(0).equals("2")){
             System.out.println("Showing all registered Users");

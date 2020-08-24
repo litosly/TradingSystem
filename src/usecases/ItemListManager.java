@@ -1,6 +1,7 @@
 package usecases;
 
 import entities.*;
+import gateway.ClientUserReadWrite;
 import presenter.PromptPresenter;
 
 import java.io.BufferedReader;
@@ -10,16 +11,18 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static gateway.FileReadAndWrite.THRESHOLDMANAGER_FILE;
 import static gateway.FileReadAndWrite.TRADE_SET_UP_PROMPT;
 
 public class ItemListManager {
     private ItemList itemList;
     private ClientUserManager clientUserManager;
-    private int editAppointmentLimit = 3;
+    private ClientUserReadWrite clientUserReadWrite;
 
     // David's code change. changed because I want to move Read and Write away from usecase and into gateway.
-    public ItemListManager(ClientUserManager clientUserManager) {
+    public ItemListManager(ClientUserManager clientUserManager){
         this.clientUserManager = clientUserManager;
+        clientUserReadWrite = new ClientUserReadWrite();
     }
 
     public ItemList getItemList() {
@@ -106,6 +109,8 @@ public class ItemListManager {
     }
 
     public boolean editAppointment(String id, ClientUser curUser) throws IOException {
+        // Get Edit Appointment Threshold
+        int editAppointmentLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numEditAllowedPerUser");
 
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
@@ -113,14 +118,14 @@ public class ItemListManager {
                     // Check if User Edit Count exceed limit
                     boolean limitExceed1 = false;
                     boolean limitExceed2 = false;
-                    if (appointment.getUser1EditsCount()>this.editAppointmentLimit) {
+                    if (appointment.getUser1EditsCount()> editAppointmentLimit) {
                         System.out.println("User 1 Edit Count exceeds limit");
                         limitExceed1 = true;
                         if (appointment.getUsername1().equals(curUser.getUserName())){
                             return false;
                         }
                     }
-                    if (appointment.getUser2EditsCount()>this.editAppointmentLimit) {
+                    if (appointment.getUser2EditsCount()> editAppointmentLimit) {
                         System.out.println("User 2 Edit Count exceeds limit");
                         limitExceed2 = true;
                         if (appointment.getUsername2().equals(curUser.getUserName())){
@@ -192,12 +197,6 @@ public class ItemListManager {
         return false;
     }
 
-    public void showAllUserInventories() {
-        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
-            System.out.println(clientUser.toString());
-            System.out.println(clientUser.getInventory().toString());
-        }
-    }
 
     public Item findItemByItemId(String id) {
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
@@ -454,7 +453,7 @@ public class ItemListManager {
         }
     }
 
-    private static <K, V extends Comparable<? super V>> List<Entry<K, V>>
+    public static <K, V extends Comparable<? super V>> List<Entry<K, V>>
     findGreatest(Map<K, V> map, int n)
     {
         Comparator<? super Entry<K, V>> comparator =

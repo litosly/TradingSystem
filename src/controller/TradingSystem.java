@@ -2,8 +2,10 @@ package controller;
 
 import entities.Appointment;
 import entities.ClientUser;
+import entities.Item;
 import entities.TransactionTicket;
 import gateway.ClientUserReadWrite;
+import presenter.ItemListPresenter;
 import presenter.PromptPresenter;
 import usecases.ClientUserManager;
 import usecases.ItemListManager;
@@ -16,8 +18,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import gateway.ClientUserReadWrite;
-
+import gateway.ClientUserReadWrite.*;
 import static gateway.FileReadAndWrite.*;
 
 public class TradingSystem implements InputProcessable{
@@ -26,14 +27,16 @@ public class TradingSystem implements InputProcessable{
     private ItemListManager itemListManager ;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
     ClientUserReadWrite clientUserReadWrite = new ClientUserReadWrite();
+    private ItemListPresenter itemListPresenter;
     private int numTry = 0;
     private int maxNumTry = 2;
-    private int incompleteTransactionLimit = 3;
+    private int incompleteTransactionLimit;
 
     public TradingSystem(ClientUserManager clientUserManager){
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
         this.tradeManager  = new TradeManager(clientUserManager);
+        this.itemListPresenter = new ItemListPresenter(clientUserManager);
     }
 
 
@@ -54,17 +57,17 @@ public class TradingSystem implements InputProcessable{
          * 4. Return to Client menu
          * */
         if (inputArray.get(0).equals("1")) {
-            itemListManager.showAllUserInventories();
+            itemListPresenter.showAllUserInventories();
             addItemToWishlist();
             run();
         }
         else if (inputArray.get(0).equals("2")) {
-            itemListManager.showAllUserInventories();
+            itemListPresenter.showAllUserInventories();
             requestToTrade();
             run();
         }
         else if (inputArray.get(0).equals("3")) {
-            itemListManager.showAllUserInventories();
+            itemListPresenter.showAllUserInventories();
             requestToBurrow();
         }
         else if (inputArray.get(0).equals("4")) {
@@ -106,6 +109,7 @@ public class TradingSystem implements InputProcessable{
     }
 
     private void requestToTrade() throws IOException, ClassNotFoundException {
+        this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numIncompleteTransaction");
         if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
@@ -142,6 +146,13 @@ public class TradingSystem implements InputProcessable{
     }
 
     public void requestToBurrow() throws IOException, ClassNotFoundException {
+//        clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE);
+        this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("\uFEFFnumIncompleteTransaction");
+        int numItemsLendBeforeBorrow = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numItemsLendBeforeBorrow");
+        if ( getNumLendedItems(clientUserManager.getCurrentUser()) < numItemsLendBeforeBorrow){
+            System.out.println("Not Enough Items in Inventory or Lending History, Cannot Borrow");
+            run();
+        }
         if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
@@ -176,6 +187,18 @@ public class TradingSystem implements InputProcessable{
     public boolean checkIncompleteTransaction(ClientUser curUser, int limit){
         int count = curUser.getPendingTransaction().getTransactionTicketList().size();
         return count < limit;
+    }
+
+    public int getNumLendedItems(ClientUser curUser){
+        int count = 0;
+        for (TransactionTicket transactionTicket: curUser.getHistory().getTransactionTicketList()){
+            if (transactionTicket!= null){
+                if (transactionTicket.getProposer().equals(curUser.getUserName())){
+                    count ++;
+                }
+            }
+        }
+        return count;
     }
 
     public void confirmAppointment() throws IOException, ClassNotFoundException {

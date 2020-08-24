@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d5aa8168-b241-454e-9fa5-8313c095fe16" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/presenter/ItemListPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/AdminSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/AdminSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/TradingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/TradingSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/VisitorBrowsingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/VisitorBrowsingSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/gateway/ClientUserReadWrite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/gateway/ClientUserReadWrite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/gateway/FileReadAndWrite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/gateway/FileReadAndWrite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AdminSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AdminSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/TradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TradingSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client_users.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usecases/ItemListManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ItemListManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,6 +86,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="359" y="193" width="1071" height="748" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598156886716">
       <screen x="0" y="23" width="1792" height="1017" />
@@ -58,26 +110,42 @@
       <screen x="0" y="23" width="1792" height="1017" />
     </state>
     <state x="632" y="340" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1598151581585" />
-    <state width="1750" height="234" key="GridCell.Tab.0.bottom" timestamp="1598286203347">
+    <state width="1750" height="232" key="GridCell.Tab.0.bottom" timestamp="1598291448400">
       <screen x="0" y="23" width="1792" height="1013" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.bottom/0.23.1792.1013@0.23.1792.1013" timestamp="1598286203347" />
+    <state width="1750" height="232" key="GridCell.Tab.0.bottom/0.23.1792.1013@0.23.1792.1013" timestamp="1598291448400" />
     <state width="1750" height="234" key="GridCell.Tab.0.bottom/0.23.1792.1017@0.23.1792.1017" timestamp="1598250109738" />
-    <state width="1750" height="234" key="GridCell.Tab.0.center" timestamp="1598286203346">
+    <state width="1750" height="232" key="GridCell.Tab.0.center" timestamp="1598291448399">
       <screen x="0" y="23" width="1792" height="1013" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.center/0.23.1792.1013@0.23.1792.1013" timestamp="1598286203346" />
+    <state width="1750" height="232" key="GridCell.Tab.0.center/0.23.1792.1013@0.23.1792.1013" timestamp="1598291448399" />
     <state width="1750" height="234" key="GridCell.Tab.0.center/0.23.1792.1017@0.23.1792.1017" timestamp="1598250109737" />
-    <state width="1750" height="234" key="GridCell.Tab.0.left" timestamp="1598286203345">
+    <state width="1750" height="232" key="GridCell.Tab.0.left" timestamp="1598291448398">
       <screen x="0" y="23" width="1792" height="1013" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.left/0.23.1792.1013@0.23.1792.1013" timestamp="1598286203345" />
+    <state width="1750" height="232" key="GridCell.Tab.0.left/0.23.1792.1013@0.23.1792.1013" timestamp="1598291448398" />
     <state width="1750" height="234" key="GridCell.Tab.0.left/0.23.1792.1017@0.23.1792.1017" timestamp="1598250109737" />
-    <state width="1750" height="234" key="GridCell.Tab.0.right" timestamp="1598286203346">
+    <state width="1750" height="232" key="GridCell.Tab.0.right" timestamp="1598291448400">
       <screen x="0" y="23" width="1792" height="1013" />
     </state>
-    <state width="1750" height="234" key="GridCell.Tab.0.right/0.23.1792.1013@0.23.1792.1013" timestamp="1598286203346" />
+    <state width="1750" height="232" key="GridCell.Tab.0.right/0.23.1792.1013@0.23.1792.1013" timestamp="1598291448400" />
     <state width="1750" height="234" key="GridCell.Tab.0.right/0.23.1792.1017@0.23.1792.1017" timestamp="1598250109738" />
+    <state width="1750" height="232" key="GridCell.Tab.1.bottom" timestamp="1598289985884">
+      <screen x="0" y="23" width="1792" height="1013" />
+    </state>
+    <state width="1750" height="232" key="GridCell.Tab.1.bottom/0.23.1792.1013@0.23.1792.1013" timestamp="1598289985884" />
+    <state width="1750" height="232" key="GridCell.Tab.1.center" timestamp="1598289985883">
+      <screen x="0" y="23" width="1792" height="1013" />
+    </state>
+    <state width="1750" height="232" key="GridCell.Tab.1.center/0.23.1792.1013@0.23.1792.1013" timestamp="1598289985883" />
+    <state width="1750" height="232" key="GridCell.Tab.1.left" timestamp="1598289985883">
+      <screen x="0" y="23" width="1792" height="1013" />
+    </state>
+    <state width="1750" height="232" key="GridCell.Tab.1.left/0.23.1792.1013@0.23.1792.1013" timestamp="1598289985883" />
+    <state width="1750" height="232" key="GridCell.Tab.1.right" timestamp="1598289985883">
+      <screen x="0" y="23" width="1792" height="1013" />
+    </state>
+    <state width="1750" height="232" key="GridCell.Tab.1.right/0.23.1792.1013@0.23.1792.1013" timestamp="1598289985883" />
     <state x="384" y="113" key="SettingsEditor" timestamp="1598151512165">
       <screen x="0" y="23" width="1792" height="1017" />
     </state>

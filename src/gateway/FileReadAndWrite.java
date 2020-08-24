@@ -2,7 +2,6 @@ package gateway;
 
 import java.io.*;
 
-// TODO: document it
 public class FileReadAndWrite {
 
     public final static String CLIENT_USER_FILE = "./src/database/client_users.ser";
@@ -19,7 +18,7 @@ public class FileReadAndWrite {
     public final static String TRADE_SET_UP_PROMPT = "database/tradeSetUpPrompt.txt";
 
     // Threshold manager
-    public final static String THRESHOLDMANAGER_FILE = "./phase1/src/database/thresholds.ser";
+    public final static String THRESHOLDMANAGER_FILE = "./src/database/thresholds.csv";
 
     //Admin System Prompts
     //Threshold Prompts

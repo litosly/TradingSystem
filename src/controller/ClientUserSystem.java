@@ -3,6 +3,7 @@ package controller;
 import entities.*;
 import gateway.AppointmentListReadWrite;
 import gateway.ClientUserReadWrite;
+import presenter.ItemListPresenter;
 import presenter.PromptPresenter;
 import usecases.AppointmentManager;
 import usecases.ClientUserManager;
@@ -28,6 +29,7 @@ public class ClientUserSystem implements InputProcessable{
     private ClientUserManager clientUserManager;
     private ItemListManager itemListManager;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
+    private ItemListPresenter itemListPresenter;
 
     private int numTransactions = 3;
     private int numPartners = 3;
@@ -35,6 +37,7 @@ public class ClientUserSystem implements InputProcessable{
     public ClientUserSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
+        this.itemListPresenter = new ItemListPresenter(clientUserManager);
     }
 
     public void run() throws ClassNotFoundException, IOException {
@@ -55,11 +58,11 @@ public class ClientUserSystem implements InputProcessable{
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
 //            System.out.println(clientUserManager.getCurrentUser().getHistory().getTransactionTicketList().toString());
-            itemListManager.printRecentTransactions(this.numTransactions, clientUserManager.getCurrentUser());
+            itemListPresenter.printRecentTransactions(this.numTransactions, clientUserManager.getCurrentUser());
         }
         // 4. View Most Frequent Trade Partners
         else if (inputArray.get(0).equals("4")) {
-            itemListManager.printTradingPartners(this.numPartners, clientUserManager.getCurrentUser());
+            itemListPresenter.printTradingPartners(this.numPartners, clientUserManager.getCurrentUser());
         }
         // 5. Browse Pending Appointments
         else if (inputArray.get(0).equals("5")) {
@@ -67,7 +70,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 6. Browse Inventory
         else if (inputArray.get(0).equals("6")) {
-            itemListManager.showAllUserInventories();
+            itemListPresenter.showAllUserInventories();
         }
         // 7. View your wish list
         else if (inputArray.get(0).equals("7")) {
@@ -107,7 +110,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 12. Recommended Items to Lend
         else if (inputArray.get(0).equals("12")) {
-            itemListManager.showAllUserInventories(); // browse inventory
+            itemListPresenter.showAllUserInventories(); // browse inventory
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Please Select Items you like");
             String input = br.readLine();
