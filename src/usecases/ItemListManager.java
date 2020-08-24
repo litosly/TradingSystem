@@ -147,6 +147,7 @@ public class ItemListManager {
 
                     // Increment User Edit Count
                     appointment.incrementUserEditsCount(curUser.getUserName());
+                    appointment.setIsUpdated(true);
                     return true;
                 }
             }

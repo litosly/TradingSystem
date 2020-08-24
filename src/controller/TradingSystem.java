@@ -1,6 +1,7 @@
 package controller;
 
 import entities.Appointment;
+import entities.ClientUser;
 import entities.TransactionTicket;
 import gateway.ClientUserReadWrite;
 import presenter.PromptPresenter;
@@ -27,6 +28,7 @@ public class TradingSystem implements InputProcessable{
     ClientUserReadWrite clientUserReadWrite = new ClientUserReadWrite();
     private int numTry = 0;
     private int maxNumTry = 2;
+    private int incompleteTransactionLimit = 3;
 
     public TradingSystem(ClientUserManager clientUserManager){
         this.clientUserManager = clientUserManager;
@@ -104,45 +106,60 @@ public class TradingSystem implements InputProcessable{
     }
 
     private void requestToTrade() throws IOException, ClassNotFoundException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
-        System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
-        System.out.println("Please type in your item id to complete the process.");
-        String input = br.readLine();
-        if (itemListManager.findItemByItemId(inputArray.get(0)) != null && itemListManager.findItemByItemId(input) != null) {
-            // Creating a new trade object for trading
-            Appointment appointment = tradeManager.trade(
-                    itemListManager.findItemByItemId(input),
-                    itemListManager.findItemByItemId(inputArray.get(0)),
-                    inputArray.get(1),
-                    inputArray.get(2)
-            );
-            clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
-            itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
-            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-        } else {
-            System.out.println("Id does not match. Please try again.");
+        if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
+            System.out.println(clientUserManager.getCurrentUser().getInventory().toString());
+            System.out.println("Please type in your item id to complete the process.");
+            String input = br.readLine();
+            if (itemListManager.findItemByItemId(inputArray.get(0)) != null && itemListManager.findItemByItemId(input) != null) {
+                // Creating a new trade object for trading
+                Appointment appointment = tradeManager.trade(
+                        itemListManager.findItemByItemId(input),
+                        itemListManager.findItemByItemId(inputArray.get(0)),
+                        inputArray.get(1),
+                        inputArray.get(2)
+                );
+                clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
+                itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
+                ClientUserReadWrite.saveToFile(CLIENT_USER_FILE, clientUserManager);
+            } else {
+                System.out.println("Id does not match. Please try again.");
+            }
+        } else{
+            System.out.println("Incomplete Transaction Limit Exceeds, account frozen.");
+            clientUserManager.getCurrentUser().setAccountStatus("frozen");
         }
 
     }
 
     public void requestToBurrow() throws IOException, ClassNotFoundException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
-        if (itemListManager.findItemByItemId(inputArray.get(0)) != null){ //&& itemListManager.findItemByItemId(input) != null) {
-            Appointment appointment = tradeManager.borrow(
-                    itemListManager.findItemByItemId(inputArray.get(0)),
-                    clientUserManager.getCurrentUser(), // notice now we set the owner of the item to be proposer.
-                    inputArray.get(1),
-                    inputArray.get(2));
-            System.out.println("Appointment Setup Successfully, waiting for the other user to confirm.");
-            clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
-            itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
-            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-            System.out.println(clientUserManager.getCurrentUser().getPendingAppointments());
-        } else {
-            System.out.println("Id does not match. Please try again.");
+        if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
+            if (itemListManager.findItemByItemId(inputArray.get(0)) != null) { //&& itemListManager.findItemByItemId(input) != null) {
+                Appointment appointment = tradeManager.borrow(
+                        itemListManager.findItemByItemId(inputArray.get(0)),
+                        clientUserManager.getCurrentUser(), // notice now we set the owner of the item to be proposer.
+                        inputArray.get(1),
+                        inputArray.get(2));
+                System.out.println("Appointment Setup Successfully, waiting for the other user to confirm.");
+                clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
+                itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
+                ClientUserReadWrite.saveToFile(CLIENT_USER_FILE, clientUserManager);
+                System.out.println(clientUserManager.getCurrentUser().getPendingAppointments());
+            } else {
+                System.out.println("Id does not match. Please try again.");
+            }
+        } else{
+            System.out.println("Incomplete Transaction Limit Exceeds, account frozen.");
+            clientUserManager.getCurrentUser().setAccountStatus("frozen");
         }
+    }
+
+    public boolean checkIncompleteTransaction(ClientUser curUser, int limit){
+        int count = curUser.getPendingTransaction().getTransactionTicketList().size();
+        return count < limit;
     }
 
     public void confirmAppointment() throws IOException, ClassNotFoundException {

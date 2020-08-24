@@ -77,6 +77,10 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 9. Request to add an item
         else if (inputArray.get(0).equals("9")) {
+            if (clientUserManager.getCurrentUser().getAccountStatus().equals("frozen")){
+                System.out.println("Current Account is frozen, please ask admin to unfreeze it before proceeding to trade");
+                run();
+            }
             ArrayList<String> input = PromptPresenter.takeInputLineByLine(REQUEST_TO_ADD_ITEM_PROMPT);
             itemListManager.createAnItem(input.get(0),input.get(1),input.get(2));
             System.out.println("Please wait while an admin approves of your added item!");
@@ -134,6 +138,10 @@ public class ClientUserSystem implements InputProcessable{
     }
 
     private void trading() throws IOException, ClassNotFoundException {
+        if (clientUserManager.getCurrentUser().getAccountStatus().equals("frozen")){
+            System.out.println("Current Account is frozen, please ask admin to unfreeze it before proceeding to trade");
+            run();
+        }
         TradingSystem tradingSystem = new TradingSystem(clientUserManager);
         tradingSystem.run();
     }
