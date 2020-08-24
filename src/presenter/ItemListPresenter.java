@@ -5,16 +5,11 @@ import entities.TransactionTicket;
 import usecases.ClientUserManager;
 import usecases.ItemListManager;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import usecases.ItemListManager.*;
-import static gateway.FileReadAndWrite.LOGIN_PROMPT;
 
 public class ItemListPresenter {
     private ItemListManager itemListManager;

@@ -65,38 +65,9 @@ public class AdminSystem implements InputProcessable{
                         }
                     }
                     run();
-                case "4":  // Thresholds
-
-                    ArrayList<String> thresholdMenuInput = PromptPresenter.takeInput(THRESHOLD_PROMPT);
-                    if (thresholdMenuInput.get(0).equals("1")) {
-                        //1. Add Specific Threshhold to Specific User (String user)
-                        ArrayList<String> input1 = PromptPresenter.takeInputLineByLine(ADD_USER_THRESHOLD_PROMPT);
-                        thresholdManager.addUserThreshold(input1.get(0));
-                    } else if (thresholdMenuInput.get(0).equals("2")) {
-                        //2. Change Specific User Threshold (String user, String thresholdName, Double newValue)
-                        ArrayList<String> input2 = PromptPresenter.takeInputLineByLine(CHANGE_USER_THRESHOLD_PROMPT);
-                        double newValue = Double.parseDouble(input2.get(2));
-                        thresholdManager.changeUserThreshold(input2.get(0), input2.get(1), newValue);
-                    } else if (thresholdMenuInput.get(0).equals("3")) {
-                        //3. Add Universal Threshold(String thresholdName, Double value)
-                        ArrayList<String> input3 = PromptPresenter.takeInputLineByLine(CHANGE_THRESHOLD_PROMPT);
-                        double newValue = Double.parseDouble(input3.get(1));
-                        thresholdManager.addThreshold(input3.get(0), newValue);
-
-                    } else if (thresholdMenuInput.get(0).equals("4")) {
-                        //4. Remove Universal Threshold(String thresholdNam)
-                        ArrayList<String> input4 = PromptPresenter.takeInputLineByLine(REMOVE_THRESHOLD_PROMPT);
-                        thresholdManager.removeThreshold(input4.get(0));
-
-                    } else if (thresholdMenuInput.get(0).equals("5")) {
-                        //5. Change Universal Threshold(String thresholdName, Double newValue)
-                        ArrayList<String> input5 = PromptPresenter.takeInputLineByLine(CHANGE_THRESHOLD_PROMPT);
-                        double newValue = Double.parseDouble(input5.get(1));
-                        thresholdManager.changeGlobalThresholdValue(input5.get(0), newValue);
-                    }
-                    else {
-                        run();
-                    }
+                case "4":
+                    System.out.println("To Edit Threshold Values, Please manually change in database/thresholds.csv.");
+                    run();
                 case "5":
                     clientUserManager.printAllUsers();
                     run();
@@ -134,8 +105,8 @@ public class AdminSystem implements InputProcessable{
                     adminUserManager.printAllAdminUsers();
                     run();
                 case "9":
-//                    thresholdManager.getAllUserThresholds();
-                    clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE);
+                    // Show Threshold Value
+                    System.out.println(clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE));
                     run();
                 case "10":
                     ArrayList<String> signupadmininput = PromptPresenter.takeInputLineByLine(CREATE_ADMIN_PROMPT);

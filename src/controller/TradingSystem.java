@@ -109,7 +109,7 @@ public class TradingSystem implements InputProcessable{
     }
 
     private void requestToTrade() throws IOException, ClassNotFoundException {
-        this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numIncompleteTransaction");
+        this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("\uFEFFnumIncompleteTransaction");
         if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
@@ -146,7 +146,6 @@ public class TradingSystem implements InputProcessable{
     }
 
     public void requestToBurrow() throws IOException, ClassNotFoundException {
-//        clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE);
         this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("\uFEFFnumIncompleteTransaction");
         int numItemsLendBeforeBorrow = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numItemsLendBeforeBorrow");
         if ( getNumLendedItems(clientUserManager.getCurrentUser()) < numItemsLendBeforeBorrow){
@@ -235,7 +234,7 @@ public class TradingSystem implements InputProcessable{
             System.out.println(ticket.toString());
         }
 
-        if (clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList().isEmpty()){
+        if (clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList().isEmpty()) {
             System.out.println("No Current Pending Transaction");
             run();
         }
@@ -244,15 +243,11 @@ public class TradingSystem implements InputProcessable{
         String input = br.readLine();
         if (itemListManager.confirmTransaction(input, clientUserManager.getCurrentUser())) {
             System.out.println("Transaction confirmed by user.");
-            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE, clientUserManager);
             run();
         } else {
             System.out.println("something is wrong, please try again.");
             confirmAppointment();
         }
     }
-
-
-
-
 }
