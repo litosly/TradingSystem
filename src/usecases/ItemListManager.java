@@ -1,14 +1,21 @@
 package usecases;
 
 import entities.*;
+import presenter.PromptPresenter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static gateway.FileReadAndWrite.TRADE_SET_UP_PROMPT;
+
 public class ItemListManager {
     private ItemList itemList;
     private ClientUserManager clientUserManager;
+    private int editAppointmentLimit = 3;
 
     // David's code change. changed because I want to move Read and Write away from usecase and into gateway.
     public ItemListManager(ClientUserManager clientUserManager) {
@@ -98,8 +105,53 @@ public class ItemListManager {
         return false;
     }
 
-    public boolean editAppointment(String id){
-        return true;
+    public boolean editAppointment(String id, ClientUser curUser) throws IOException {
+
+        for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
+            for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
+                if (appointment.getId().equals(id)) {
+                    // Check if User Edit Count exceed limit
+                    boolean limitExceed1 = false;
+                    boolean limitExceed2 = false;
+                    if (appointment.getUser1EditsCount()>this.editAppointmentLimit) {
+                        System.out.println("User 1 Edit Count exceeds limit");
+                        limitExceed1 = true;
+                        if (appointment.getUsername1().equals(curUser.getUserName())){
+                            return false;
+                        }
+                    }
+                    if (appointment.getUser2EditsCount()>this.editAppointmentLimit) {
+                        System.out.println("User 2 Edit Count exceeds limit");
+                        limitExceed2 = true;
+                        if (appointment.getUsername2().equals(curUser.getUserName())){
+                            return false;
+                        }
+                    }
+                    if (limitExceed1 && limitExceed2){
+                        System.out.println("Both edit limit exceeds, pending appointment canceled");
+                        removeAppointment(appointment.getId());
+                        System.out.println("Appointment Removed");
+                        return true;
+                    }
+
+                    System.out.println("About to Edit Pending Appointment");
+                    // Edit, read input from curUser
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    System.out.println("When you want to meet instead?");
+                    String input = br.readLine();
+                    System.out.println("Where you want to meet instead?");
+                    String input2 = br.readLine();
+
+                    appointment.setTime(input);
+                    appointment.setAddress(input2);
+
+                    // Increment User Edit Count
+                    appointment.incrementUserEditsCount(curUser.getUserName());
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     public boolean confirmAppointment(String id, ClientUser curUser) {
         /**
@@ -112,11 +164,6 @@ public class ItemListManager {
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
-                    if (appointment.getUsername2().equals(curUser.getUserName())){
-                        // If current user is the proposer of the trading, cannot confirm it
-                        System.out.println("Proposer Cannot Confirm Pending Appointment");
-                        return false;
-                    }
                     System.out.println("About to confirm the pending appointment");
                     // Create TransactionTicket
                     TransactionTicket transactionTicket = new TransactionTicket(

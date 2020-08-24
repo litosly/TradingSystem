@@ -54,10 +54,12 @@ public class TradingSystem implements InputProcessable{
         if (inputArray.get(0).equals("1")) {
             itemListManager.showAllUserInventories();
             addItemToWishlist();
+            run();
         }
         else if (inputArray.get(0).equals("2")) {
             itemListManager.showAllUserInventories();
             requestToTrade();
+            run();
         }
         else if (inputArray.get(0).equals("3")) {
             itemListManager.showAllUserInventories();
@@ -65,9 +67,11 @@ public class TradingSystem implements InputProcessable{
         }
         else if (inputArray.get(0).equals("4")) {
             confirmAppointment();
+            run();
         }
         else if (inputArray.get(0).equals("5")) {
             confirmTransaction();
+            run();
         }
         // Going back
         else {
@@ -116,10 +120,8 @@ public class TradingSystem implements InputProcessable{
             clientUserManager.getCurrentUser().addToPendingAppointment(appointment);
             itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
-            run();
         } else {
             System.out.println("Id does not match. Please try again.");
-            requestToTrade();
         }
 
     }
@@ -138,10 +140,8 @@ public class TradingSystem implements InputProcessable{
             itemListManager.findUserByItemId(inputArray.get(0)).addToPendingAppointment(appointment);
             ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
             System.out.println(clientUserManager.getCurrentUser().getPendingAppointments());
-            run();
         } else {
             System.out.println("Id does not match. Please try again.");
-            requestToBurrow();
         }
     }
 
@@ -157,17 +157,17 @@ public class TradingSystem implements InputProcessable{
         System.out.println("please let us know if you would like to edit by entering 'y'");
         String input2 = br.readLine();
         if (input2.equals("y")){
-            if (itemListManager.editAppointment(input)){
-                System.out.println("Appointment Edited");
+            if (itemListManager.editAppointment(input, clientUserManager.getCurrentUser())){
+                System.out.println("Appointment Edited.");
+            } else{
+                System.out.println("Edit Appointment Failed, Please Try again.");
             }
         } else {
             if (itemListManager.confirmAppointment(input,clientUserManager.getCurrentUser())) {
                 System.out.println("Appointment confirmed.");
                 ClientUserReadWrite.saveToFile(CLIENT_USER_FILE, clientUserManager);
-                run();
             } else {
                 System.out.println("Confirm Appointment Failed, please try again.");
-                confirmAppointment();
             }
         }
     }
