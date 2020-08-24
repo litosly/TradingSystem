@@ -12,7 +12,7 @@ public class ClientUser extends User {
     private TransactionTicketList pendingTransaction;
     private AppointmentList confirmedAppointments;
     private AppointmentList pendingAppointments;
-    private String accountStatus = "active"; //we have active, pending (to be frozen by admin), and frozen;
+    private String accountStatus = "active"; //we have active, pending (to be frozen/unfrozen by admin), and frozen;
     private int numBurrowed = 0;             //the fourth status is VIP
     private int numLent = 0;
     private int incompleteLimit = 3;

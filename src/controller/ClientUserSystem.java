@@ -81,6 +81,15 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 10. Request admin to unfreeze account
         else if (inputArray.get(0).equals("10")) {
+            if (!clientUserManager.getCurrentUser().getAccountStatus().equals("frozen")){
+                System.out.println("Current Account is not frozen.");
+                run();
+            }
+            ClientUserList clientUserList = new ClientUserList();
+            clientUserList.removeFromFrozenUser(clientUserManager.getCurrentUser());
+            clientUserList.addToPendingUser(clientUserManager.getCurrentUser());
+            clientUserManager.getCurrentUser().setAccountStatus("pending");
+            System.out.println("Client user status successfully changed to pending");
         }
         // 11. View your Threshold limits
         else if (inputArray.get(0).equals("11")) {

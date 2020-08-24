@@ -18,7 +18,6 @@ import java.util.*;
 
 import static gateway.FileReadAndWrite.*;
 
-// TODO: put this into the UML
 public class AdminSystem implements InputProcessable{
     ClientUserManager clientUserManager;
     TransactionTicketManager transactionTicketManager;
@@ -44,7 +43,11 @@ public class AdminSystem implements InputProcessable{
             switch (inputArray.get(0)) {
                 case "1":
                     //show pending users
-                    clientUserManager.showPendingUsers();
+                    for (ClientUser user : clientUserManager.getClientUserList().getAllClientUser()){
+                        if (user.getAccountStatus().equals("pending")){
+                            System.out.println(user);
+                        }
+                    }
                     run();
                 case "2":
                     // show pending items

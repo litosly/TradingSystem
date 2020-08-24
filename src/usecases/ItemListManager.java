@@ -191,9 +191,6 @@ public class ItemListManager {
         return false;
     }
 
-
-
-
     public void showAllUserInventories() {
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             System.out.println(clientUser.toString());
