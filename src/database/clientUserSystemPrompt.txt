@@ -12,5 +12,7 @@ Type the corresponding '#' to choose your option
 11. View your Threshold limits
 12. Recommended Items to Lend
 13. View User Transaction History
-14. Get current date time
-15. Log Out
+14. Temporarily take down account
+15. Set Account status back to active
+16. Get current date time
+17. Log Out

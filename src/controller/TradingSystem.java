@@ -113,6 +113,14 @@ public class TradingSystem implements InputProcessable{
             System.out.println("Please type in your item id to complete the process.");
             String input = br.readLine();
             if (itemListManager.findItemByItemId(inputArray.get(0)) != null && itemListManager.findItemByItemId(input) != null) {
+                // Check if owner of the item account is active or not
+                if (itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("pending") ||
+                        itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("frozen") ||
+                        itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("temporary_left")
+                ){
+                    System.out.println("Item's owner are frozen or on vocation, please contact admin to confirm");
+                    run();
+                }
                 // Creating a new trade object for trading
                 Appointment appointment = tradeManager.trade(
                         itemListManager.findItemByItemId(input),
@@ -137,7 +145,15 @@ public class TradingSystem implements InputProcessable{
         if (checkIncompleteTransaction(clientUserManager.getCurrentUser(), this.incompleteTransactionLimit)) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             ArrayList<String> inputArray = PromptPresenter.takeInputLineByLine(TRADE_SET_UP_PROMPT);
-            if (itemListManager.findItemByItemId(inputArray.get(0)) != null) { //&& itemListManager.findItemByItemId(input) != null) {
+            if (itemListManager.findItemByItemId(inputArray.get(0)) != null) {
+                // Check if owner of the item account is active or not
+                if (itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("pending") ||
+                        itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("frozen") ||
+                        itemListManager.findUserByItemId(inputArray.get(0)).getAccountStatus().equals("temporary_left")
+                ){
+                    System.out.println("Item's owner are frozen or on vocation, please contact admin to confirm");
+                    run();
+                }
                 Appointment appointment = tradeManager.borrow(
                         itemListManager.findItemByItemId(inputArray.get(0)),
                         clientUserManager.getCurrentUser(), // notice now we set the owner of the item to be proposer.

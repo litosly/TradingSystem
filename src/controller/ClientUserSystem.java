@@ -122,8 +122,24 @@ public class ClientUserSystem implements InputProcessable{
                 System.out.println(transactionTicket.toString());
             }
         }
-        // 14. Get current date time
+        // 14. Temporarily Take down
         else if (inputArray.get(0).equals("14")) {
+            System.out.println("Setting Current Status to temporary_left");
+            clientUserManager.getCurrentUser().setAccountStatus("temporary_left");
+        }
+        // 15. Back from vocation.
+        else if (inputArray.get(0).equals("15")) {
+
+            if (clientUserManager.getCurrentUser().getAccountStatus().equals("temporary_left")){
+                System.out.println("Setting Current Status back to active");
+                clientUserManager.getCurrentUser().setAccountStatus("active");
+            } else{
+                System.out.println("Current Status not temporary_left, cannot change to active.");
+            }
+            run();
+        }
+        // 15. Get current date time
+        else if (inputArray.get(0).equals("16")) {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             LocalDateTime now = LocalDateTime.now();
             System.out.println(dtf.format(now));
@@ -138,8 +154,11 @@ public class ClientUserSystem implements InputProcessable{
     }
 
     private void trading() throws IOException, ClassNotFoundException {
-        if (clientUserManager.getCurrentUser().getAccountStatus().equals("frozen")){
-            System.out.println("Current Account is frozen, please ask admin to unfreeze it before proceeding to trade");
+        if (clientUserManager.getCurrentUser().getAccountStatus().equals("frozen") ||
+                clientUserManager.getCurrentUser().getAccountStatus().equals("temporary_left") ||
+                clientUserManager.getCurrentUser().getAccountStatus().equals("pending")){
+            System.out.println("Current Account is frozen or on vocation, please ask admin to unfreeze it or set your" +
+                    "status back to active before proceeding to trade");
             run();
         }
         TradingSystem tradingSystem = new TradingSystem(clientUserManager);
