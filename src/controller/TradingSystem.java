@@ -146,6 +146,7 @@ public class TradingSystem implements InputProcessable{
     }
 
     public void requestToBurrow() throws IOException, ClassNotFoundException {
+        // Check Eligibility to confirm transaction
         this.incompleteTransactionLimit = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("\uFEFFnumIncompleteTransaction");
         int numItemsLendBeforeBorrow = clientUserReadWrite.readThresholdsFromCSV(THRESHOLDMANAGER_FILE).get("numItemsLendBeforeBorrow");
         if ( getNumLendedItems(clientUserManager.getCurrentUser()) < numItemsLendBeforeBorrow){
@@ -164,6 +165,7 @@ public class TradingSystem implements InputProcessable{
                     System.out.println("Item's owner are frozen or on vocation, please contact admin to confirm");
                     run();
                 }
+                // create Borrow event
                 Appointment appointment = tradeManager.borrow(
                         itemListManager.findItemByItemId(inputArray.get(0)),
                         clientUserManager.getCurrentUser(), // notice now we set the owner of the item to be proposer.
@@ -192,7 +194,9 @@ public class TradingSystem implements InputProcessable{
         int count = 0;
         for (TransactionTicket transactionTicket: curUser.getHistory().getTransactionTicketList()){
             if (transactionTicket!= null){
-                if (transactionTicket.getProposer().equals(curUser.getUserName())){
+                if (transactionTicket.getProposer().equals(curUser.getUserName()) ||
+                    transactionTicket.getReceiver().equals(curUser.getUserName())
+                ){
                     count ++;
                 }
             }

@@ -33,7 +33,7 @@ public class ItemListPresenter {
         List<Map.Entry<String, Integer>> greatest = itemListManager.findGreatest(tradingPartners, numPartners);
         System.out.println("Top "+ numPartners +" Trading Partners:");
         for (Map.Entry<String, Integer> entry : greatest){
-            System.out.println(entry.getKey());
+            System.out.println(entry.getKey() + ", traded with you " + entry.getValue() + " time(s).");
         }
     }
 

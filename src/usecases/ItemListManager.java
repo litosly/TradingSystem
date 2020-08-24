@@ -155,18 +155,28 @@ public class ItemListManager {
          * Put the transaction ticket into both clients' inventory
          * Finally delete the transaction
          * */
+        TransactionTicket transactionTicket;
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
                     System.out.println("About to confirm the pending appointment");
                     // Create TransactionTicket
-                    TransactionTicket transactionTicket = new TransactionTicket(
-                            appointment.getItem1(),
-                            appointment.getTime(),
-                            appointment.getUsername1(), // previous Proposer now becomes receiver
-                            appointment.getUsername2(), // previous Receiver now becomes proposer
-                            appointment.getId());
-
+                    if (appointment.getItem2()==null) {
+                        transactionTicket = new TransactionTicket(
+                                appointment.getItem1(),
+                                appointment.getTime(),
+                                appointment.getUsername1(), // Proposer
+                                appointment.getUsername2(), // Receiver
+                                appointment.getId());
+                    } else{
+                        transactionTicket = new TransactionTicket(
+                                appointment.getItem1(),
+                                appointment.getItem2(),
+                                appointment.getTime(),
+                                appointment.getUsername1(), // Proposer
+                                appointment.getUsername2(), // Receiver
+                                appointment.getId());
+                    }
                     // Add to both users transaction ticket and confirmed appointment list
                     ClientUser Proposer = findUserByUsername(appointment.getUsername1());
                     ClientUser Receiver = findUserByUsername(appointment.getUsername2());
@@ -256,8 +266,7 @@ public class ItemListManager {
          * Append to Transaction history upon both user approved and
          * 1. Remove item from wishlist if it's there
          * 2. Remove item from lending item
-         * 4. update system time (TODO)
-         * 5. calculate for return time if temporary transaction (TODO)
+         * 3. Update Status
          * Finally delete the pending transaction
          * */
         TransactionTicket targettransactionTicket = null;
@@ -329,8 +338,10 @@ public class ItemListManager {
                 // 2. Remove item from lending item
                 System.out.println(" -- Removing Item(s) from User Lending List");
                 otherUser.getInventory().getItems().remove(item1);
+                curUser.getInventory().getItems().remove(item1);
                 if (item2 != null){
                     curUser.getInventory().getItems().remove(item2);
+                    otherUser.getInventory().getItems().remove(item2);
                 }
 
                 // 3. Update User Status
