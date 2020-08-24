@@ -79,7 +79,11 @@ public class TransactionTicket implements Serializable {
 
     @Override
     public String toString() {
-        return time + "," + appointmentId  + "," + proposer  + "," + receiver  + "," + isUser1Confirmed  + "," + isUser2Confirmed
-                + "," + isCompleted;
+        return appointmentId + "," + time + "," + proposer  + "," + receiver
+                + ", user 1 Confirmed: " + isUser1Confirmed
+                + ", user 2 confirmed: " + isUser2Confirmed
+                + ", Completed: " + isCompleted + ".\n"
+                + "Transaction Item 1: " + item1 + "\n"
+                + "Transaction Item 2: " + item2;
     }
 }
