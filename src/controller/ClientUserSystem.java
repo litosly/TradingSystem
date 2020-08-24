@@ -29,6 +29,9 @@ public class ClientUserSystem implements InputProcessable{
     private ItemListManager itemListManager;
     private ClientUserReadWrite curw = new ClientUserReadWrite();
 
+    private int numTransactions = 3;
+    private int numPartners = 3;
+
     public ClientUserSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
@@ -52,11 +55,11 @@ public class ClientUserSystem implements InputProcessable{
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
 //            System.out.println(clientUserManager.getCurrentUser().getHistory().getTransactionTicketList().toString());
-            itemListManager.printRecentTransactions(3, clientUserManager.getCurrentUser());
+            itemListManager.printRecentTransactions(this.numTransactions, clientUserManager.getCurrentUser());
         }
         // 4. View Most Frequent Trade Partners
         else if (inputArray.get(0).equals("4")) {
-            itemListManager.printTradingPartners(3, clientUserManager.getCurrentUser());
+            itemListManager.printTradingPartners(this.numPartners, clientUserManager.getCurrentUser());
         }
         // 5. Browse Pending Appointments
         else if (inputArray.get(0).equals("5")) {

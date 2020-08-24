@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5aa8168-b241-454e-9fa5-8313c095fe16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/TradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TradingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/clientUserSystemPrompt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/clientUserSystemPrompt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client_users.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
