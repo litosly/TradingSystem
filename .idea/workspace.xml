@@ -20,23 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5aa8168-b241-454e-9fa5-8313c095fe16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/presenter/ItemListPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/AdminSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/AdminSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/ClientUserSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/TradingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/TradingSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/controller/VisitorBrowsingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/controller/VisitorBrowsingSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/database/client_users.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/gateway/ClientUserReadWrite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/gateway/ClientUserReadWrite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/gateway/FileReadAndWrite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/gateway/FileReadAndWrite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TradingSystem/usecases/ItemListManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AdminSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AdminSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientUserSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/TradingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TradingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisitorBrowsingSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/client_users.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client_users.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/ClientUserReadWrite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gateway/FileReadAndWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/ClientUserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/ClientUserList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presenter/ItemListPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presenter/ItemListPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usecases/ClientUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ClientUserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/usecases/ItemListManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usecases/ItemListManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

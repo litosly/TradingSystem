@@ -1,11 +1,9 @@
 package controller;
 
 import entities.*;
-import gateway.AppointmentListReadWrite;
 import gateway.ClientUserReadWrite;
 import presenter.ItemListPresenter;
 import presenter.PromptPresenter;
-import usecases.AppointmentManager;
 import usecases.ClientUserManager;
 import usecases.ItemListManager;
 import usecases.ThresholdManager;
@@ -14,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
@@ -34,7 +31,7 @@ public class ClientUserSystem implements InputProcessable{
     private int numTransactions = 3;
     private int numPartners = 3;
 
-    public ClientUserSystem(ClientUserManager clientUserManager) throws ClassNotFoundException {
+    public ClientUserSystem(ClientUserManager clientUserManager) {
         this.clientUserManager = clientUserManager;
         this.itemListManager = new ItemListManager(clientUserManager);
         this.itemListPresenter = new ItemListPresenter(clientUserManager);
@@ -53,7 +50,7 @@ public class ClientUserSystem implements InputProcessable{
         }
         // 2. Browse Pending Transactions
         else if (inputArray.get(0).equals("2")) {
-            printPendingTransactions();
+            itemListPresenter.printPendingTransactions();
         }
         // 3. View Recently Traded Items
         else if (inputArray.get(0).equals("3")) {
@@ -177,14 +174,6 @@ public class ClientUserSystem implements InputProcessable{
             System.out.println(userWithItem.getWishList());
         } else {
             System.out.println("Try lend anything to the User! (He/She does not have anything in their mind.");
-        }
-    }
-
-    // pending transactions
-    public void printPendingTransactions() {
-        List<TransactionTicket> ticketList = clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList();
-        for (TransactionTicket ticket : ticketList){
-            System.out.println(ticket.toString());
         }
     }
 }

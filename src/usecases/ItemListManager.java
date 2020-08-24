@@ -28,17 +28,6 @@ public class ItemListManager {
     public ItemList getItemList() {
         return this.itemList;
     }
-
-    // for user to call when adding to
-    public void addItemToWishList(Item item) {
-        clientUserManager.getCurrentUser().addToWishList(item);
-    }
-
-    //for admin to call when approving an item
-    public void addItemToInventory(Item item) {
-        clientUserManager.getCurrentUser().addToInventory(item);
-    }
-
     private void addItemToPendingList(Item item) {
         clientUserManager.getCurrentUser().addToPendingItem(item);
     }
@@ -47,7 +36,6 @@ public class ItemListManager {
         addItemToPendingList(new Item(itemName, description, clientUserManager.getCurrentUser().getUserName(), type));
     }
 
-    // TODO: Implement Strategy design pattern
     public boolean showAllPendingItem() {
         boolean notEmpty = false;
         for (ClientUser clientUser : clientUserManager.getClientUserList().getAllClientUser()) {
@@ -243,39 +231,6 @@ public class ItemListManager {
     }
 
 
-    public ItemList getItemListByUser(String username) {
-        ItemList itemList = new ItemList();
-        for (Item item : this.itemList.getItems()) {
-            if (item.getOwnerName().equalsIgnoreCase(username)) {
-                itemList.getItems().add(item);
-            }
-        }
-        return itemList;
-    }
-
-    public ArrayList<Item> getMatchedItems(String regEx, String type) {
-        ArrayList<Item> filteredList = new ArrayList<>();
-        for (Item item : itemList.getItems()) {
-            if (item.getItemName().toLowerCase().matches(regEx.toLowerCase()) && item.getType().equals(type)) {
-                filteredList.add(item);
-            }
-        }
-        return filteredList;
-    }
-
-    public ArrayList<Item> getAvailableItems(String type) {
-        ArrayList<Item> filteredList = new ArrayList<>();
-        for (Item item : itemList.getItems()) {
-            if (type == null) {
-                filteredList.add(item);
-            } else if (item.getType().equals(type)) {
-                filteredList.add(item);
-            }
-        }
-        return filteredList;
-    }
-
-
     public boolean isContains(String name) {
         AtomicBoolean found = new AtomicBoolean(false);
         itemList.getItems().forEach((item) -> {
@@ -415,13 +370,6 @@ public class ItemListManager {
         return transactions;
     }
 
-    public void printRecentTransactions(int numTransactions, ClientUser currentUser){
-        ArrayList<TransactionTicket> recentTransactions = getRecentTransactions(numTransactions, currentUser);
-        for (TransactionTicket transactionTicket: recentTransactions){
-            System.out.println(transactionTicket.toString());
-        }
-    }
-
     public HashMap<String, Integer> getTradePartners(ClientUser currentUser){
         String curUserName = currentUser.getUserName();
         String partnerName = null;
@@ -444,15 +392,7 @@ public class ItemListManager {
         return tradingPartners;
     }
 
-    public void printTradingPartners(int numPartners, ClientUser currentUser){
-        HashMap<String, Integer> tradingPartners = getTradePartners(currentUser);
-        List<Entry<String, Integer>> greatest = findGreatest(tradingPartners, numPartners);
-        System.out.println("Top "+ numPartners +" Trading Partners:");
-        for (Entry<String, Integer> entry : greatest){
-            System.out.println(entry.getKey());
-        }
-    }
-
+    // Helper Function for Getting top keys with highest values in hashmap
     public static <K, V extends Comparable<? super V>> List<Entry<K, V>>
     findGreatest(Map<K, V> map, int n)
     {
@@ -472,7 +412,6 @@ public class ItemListManager {
                 highest.poll();
             }
         }
-
         List<Entry<K, V>> result = new ArrayList<>();
         while (highest.size() > 0)
         {

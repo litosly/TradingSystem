@@ -48,4 +48,11 @@ public class ItemListPresenter {
             System.out.println(clientUser.getInventory().toString());
         }
     }
+
+    public void printPendingTransactions() {
+        List<TransactionTicket> ticketList = clientUserManager.getCurrentUser().getPendingTransaction().getTransactionTicketList();
+        for (TransactionTicket ticket : ticketList){
+            System.out.println(ticket.toString());
+        }
+    }
 }

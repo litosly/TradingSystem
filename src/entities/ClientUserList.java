@@ -63,9 +63,4 @@ public class ClientUserList implements Serializable {
         frozenUser.remove(clientUser);
      }
 
-    /*public AppointmentList getAllAppointment() {
-        for
-    }
-
-     */
 }
