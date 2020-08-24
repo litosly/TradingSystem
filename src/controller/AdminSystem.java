@@ -13,6 +13,8 @@ import gateway.AdminUserReadWrite;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -144,6 +146,10 @@ public class AdminSystem implements InputProcessable{
                     removePendingItems();
                     run();
                 case "13":
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                    LocalDateTime now = LocalDateTime.now();
+                    System.out.println(dtf.format(now));
+                case "14":
                     clientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
                     StartMenuSystem startMenuSystem = new StartMenuSystem();
                     startMenuSystem.run();

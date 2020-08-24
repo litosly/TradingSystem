@@ -15,6 +15,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 import static gateway.FileReadAndWrite.*; // Import all final vals/paths
 
 public class ClientUserSystem implements InputProcessable{
@@ -114,6 +117,12 @@ public class ClientUserSystem implements InputProcessable{
             for (TransactionTicket transactionTicket: clientUserManager.getCurrentUser().getHistory().getTransactionTicketList()){
                 System.out.println(transactionTicket.toString());
             }
+        }
+        // 14. Get current date time
+        else if (inputArray.get(0).equals("14")) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDateTime now = LocalDateTime.now();
+            System.out.println(dtf.format(now));
         }
         // log out
         else {

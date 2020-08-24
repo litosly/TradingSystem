@@ -2,4 +2,5 @@ Type the corresponding '#' to choose your option
 1. Browse Inventory
 2. View All registered Client Users
 3. View Threshold Values
-4. Return to Main Menu
+4. View Current Date Time
+5. Return to Main Menu

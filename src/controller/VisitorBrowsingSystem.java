@@ -8,6 +8,8 @@ import usecases.ItemListManager;
 import usecases.ThresholdManager;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static gateway.FileReadAndWrite.*; // Import all final vals/paths
@@ -44,6 +46,11 @@ public class VisitorBrowsingSystem implements InputProcessable{
         // 11. View Threshold Values
         else if (inputArray.get(0).equals("3")) {
             System.out.println(ThresholdManager.getAllUserThresholds(clientUserManager.getCurrentUser().getUserName()));
+        }
+        else if (inputArray.get(0).equals("4")) {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDateTime now = LocalDateTime.now();
+            System.out.println(dtf.format(now));
         }
         // log out
         else {
