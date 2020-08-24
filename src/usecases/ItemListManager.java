@@ -98,7 +98,10 @@ public class ItemListManager {
         return false;
     }
 
-    public boolean confirmAppointment(String id) {
+    public boolean editAppointment(String id){
+        return true;
+    }
+    public boolean confirmAppointment(String id, ClientUser curUser) {
         /**
          * Confirm Appointment that are pending,
          * First extract info in the pending appointment
@@ -109,14 +112,18 @@ public class ItemListManager {
         for (ClientUser clientUser : clientUserManager.getClientUserList().getActiveUser()) {
             for (Appointment appointment : clientUser.getPendingAppointments().getAppointmentList()) {
                 if (appointment.getId().equals(id)) {
+                    if (appointment.getUsername2().equals(curUser.getUserName())){
+                        // If current user is the proposer of the trading, cannot confirm it
+                        System.out.println("Proposer Cannot Confirm Pending Appointment");
+                        return false;
+                    }
                     System.out.println("About to confirm the pending appointment");
-
                     // Create TransactionTicket
                     TransactionTicket transactionTicket = new TransactionTicket(
                             appointment.getItem1(),
                             appointment.getTime(),
-                            appointment.getUsername1(), // Proposer
-                            appointment.getUsername2(), // Receiver
+                            appointment.getUsername1(), // previous Proposer now becomes receiver
+                            appointment.getUsername2(), // previous Receiver now becomes proposer
                             appointment.getId());
 
                     // Add to both users transaction ticket and confirmed appointment list
@@ -136,6 +143,8 @@ public class ItemListManager {
         }
         return false;
     }
+
+
 
 
     public void showAllUserInventories() {

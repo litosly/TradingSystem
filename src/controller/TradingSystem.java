@@ -130,7 +130,7 @@ public class TradingSystem implements InputProcessable{
         if (itemListManager.findItemByItemId(inputArray.get(0)) != null){ //&& itemListManager.findItemByItemId(input) != null) {
             Appointment appointment = tradeManager.borrow(
                     itemListManager.findItemByItemId(inputArray.get(0)),
-                    clientUserManager.getCurrentUser(),
+                    clientUserManager.getCurrentUser(), // notice now we set the owner of the item to be proposer.
                     inputArray.get(1),
                     inputArray.get(2));
             System.out.println("Appointment Setup Successfully, waiting for the other user to confirm.");
@@ -154,14 +154,22 @@ public class TradingSystem implements InputProcessable{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("please type in the id of the appointment to confirm");
         String input = br.readLine();
-        if (itemListManager.confirmAppointment(input)) {
-            System.out.println("Appointment confirmed.");
-            ClientUserReadWrite.saveToFile(CLIENT_USER_FILE,clientUserManager);
+        System.out.println("please let us know if you would like to edit by entering 'y'");
+        String input2 = br.readLine();
+        if (input2.equals("y")){
+            if (itemListManager.editAppointment(input)){
+                System.out.println("Appointment Edited");
+            }
+        } else {
+            if (itemListManager.confirmAppointment(input,clientUserManager.getCurrentUser())) {
+                System.out.println("Appointment confirmed.");
+                ClientUserReadWrite.saveToFile(CLIENT_USER_FILE, clientUserManager);
                 run();
             } else {
-                System.out.println("somethign is wrong, please try again.");
+                System.out.println("Confirm Appointment Failed, please try again.");
                 confirmAppointment();
             }
+        }
     }
 
     public void confirmTransaction() throws IOException, ClassNotFoundException {
